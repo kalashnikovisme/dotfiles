@@ -45,6 +45,7 @@
     - apt: name=git-flow
     - apt: name=vim
       tags: vim
+    - file: path="~/.vbuf" state=touch
     - git: repo=https://github.com/ingydotnet/yaml-vim.git
            dest=~/vim_files
       tags: vim

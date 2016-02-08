@@ -19,6 +19,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'chase/vim-ansible-yaml'
+Bundle 'scrooloose/nerdtree'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
@@ -39,8 +40,9 @@ vmap <F9> :!html2haml --erb 2> /dev/null<CR>
 set relativenumber
 "allow to copy/paste between VIM instances
 " "copy the current visual selection to ~/.vbuf
-vmap <Leader>y :w! ~/.vbuf<CR>
+vmap <F10>y :w! ~/.vbuf<CR>
 " "copy the current line to the buffer file if no visual selection
-nmap <Leader>y :.w! ~/.vbuf<CR>
+nmap <F10>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
-nmap <Leader>p :r ~/.vbuf<CR>
+nmap <F10>p :r ~/.vbuf<CR>
+autocmd vimenter * NERDTree
