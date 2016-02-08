@@ -1,0 +1,23 @@
+---
+- name: Configure the PostgreSQL APT key
+  apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
+
+- name: Configure the PostgreSQL APT repositories
+  apt_repository: repo="deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release}}-pgdg main"
+                  state=present
+
+- name: Install PostgreSQL
+  apt: pkg={{ item }} state=present
+  with_items:
+    - postgresql-{{ postgresql_version }}={{ postgresql_package_version }}
+    - postgresql-server-dev-{{ postgresql_version }}={{ postgresql_package_version }}
+
+- name: Configure PostgreSQL host-based authentication
+  template: src=pg_hba.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+  notify:
+    - Restart PostgreSQL
+
+- name: Configure PostgreSQL
+  template: src=postgresql.conf.j2 dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+  notify:
+    - Restart PostgreSQL

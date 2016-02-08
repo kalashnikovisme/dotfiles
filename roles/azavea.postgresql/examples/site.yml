@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  vars:
+    postgresql_listen_addresses: "*"
+    postgresql_hba_mapping:
+      - { type: "host", database: "all", user: "all", address: "0.0.0.0/0", method: "md5" }
+      - { type: "host", database: "all", user: "all", address: "10.0.2.0/24", method: "md5" }
+
+  roles:
+    - { role: "azavea.postgresql" }

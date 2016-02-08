@@ -3,7 +3,9 @@
   vars:
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
-  tasks:
+  roles:
+    - role: azavea.postgresql
+  tasks: 
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - apt: name={{ item }}
@@ -59,4 +61,34 @@
     - file: path=~/vim_files state=absent
     - command: git config --global core.editor "vim"
       tags: vim
-      tags: vim
+    - git: repo=https://github.com/gmarik/vundle.git 
+           dest=~/.vim/bundle/vundle 
+    - command: "vim +BundleInstall +qall"
+    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.4/main/pg_hba.conf
+    - apt: name={{ item }}
+      with_items:
+        - libpq-dev
+        - libmagickwand-dev
+        - nodejs
+        - npm
+    - command: "dpkg --add-architecture i386"
+    - apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    - apt: update_cache=yes
+      ignore_errors: True
+    - apt: name=skype
+    - command: "npm config set registry http://registry.npmjs.org/"
+    - apt: name={{ item }}
+      with_items:
+        - nvidia-331
+        - nvidia-settings
+        - nvidia-prime
+        - gimp
+        - gnome-tweak-tool
+    - git: repo=https://github.com/wakatime/gedit-wakatime dest=~/gedit-wakatime
+      tags: wakatime
+    - get_url: url=https://bootstrap.pypa.io/get-pip.py dest=~/get-pip.py
+      tags: wakatime
+    - command: python ~/get-pip.py
+      tags: wakatime
+    - command: python ~/gedit-wakatime/install.py
+      tags: wakatime

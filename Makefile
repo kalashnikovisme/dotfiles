@@ -1,4 +1,5 @@
 install_environment:
+	sudo ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	sudo ansible-playbook playbook.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt-get install python-pip
