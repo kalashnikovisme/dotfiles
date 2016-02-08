@@ -1,0 +1,3 @@
+[core]
+	editor = vim
+	excludesfile = /home/pavel/.gitignore

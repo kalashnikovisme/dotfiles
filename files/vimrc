@@ -1,0 +1,47 @@
+source ~/.vim/vimrc
+set nu
+set sw=2
+set sts=2
+let g:fuzzy_ignore = "gems/*"
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+nnoremap <f3> :TlistToggle<cr>
+nnoremap <f2> :NERDTreeToggle<CR>
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-rails.git'
+Bundle 'junegunn/vim-easy-align'
+Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-repeat'
+Bundle 'chase/vim-ansible-yaml'
+filetype plugin indent on
+imap <F2> <Esc>:w<CR>
+map <F2> <Esc>:w<CR>
+imap <F3> <Esc>:q<CR>
+map <F3> <Esc>:q<CR>
+imap <F4> <Esc>:wq<CR>
+map <F4> <Esc>:wq<CR>
+imap <F5> <Esc>:set paste<CR>
+map <F5> <Esc>:set paste<CR>
+imap <F6> <Esc>:set nopaste<CR>
+map <F6> <Esc>:set nopaste<CR>
+imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+imap <F8> <Esc>:s#\%($\%(\k\+\)\)\@<=_\(\k\)#\u\1#g<CR>
+map <F8> <Esc>:s#\%($\%(\k\+\)\)\@<=_\(\k\)#\u\1#g<CR>
+nmap <F9> :%!html2haml --erb 2> /dev/null<CR>:set ft=haml<CR>
+vmap <F9> :!html2haml --erb 2> /dev/null<CR>
+set relativenumber
+"allow to copy/paste between VIM instances
+" "copy the current visual selection to ~/.vbuf
+vmap <Leader>y :w! ~/.vbuf<CR>
+" "copy the current line to the buffer file if no visual selection
+nmap <Leader>y :.w! ~/.vbuf<CR>
+" "paste the contents of the buffer file
+nmap <Leader>p :r ~/.vbuf<CR>

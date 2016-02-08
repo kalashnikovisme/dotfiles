@@ -1,0 +1,10 @@
+#Vim files
+*.swp
+*.swn
+*.swo
+*.swm
+*.swl
+*.swk
+
+#Dolphin files
+*.directory

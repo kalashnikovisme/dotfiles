@@ -36,3 +36,27 @@
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - file: path="~/.gemrc" state=touch
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
+    - file: src={{ curdir }}/files/{{ item }} dest=~/.{{ item }} state=link
+      with_items:
+        - gitignore
+        - vimrc
+    - apt: name=git-flow
+    - apt: name=vim
+      tags: vim
+    - git: repo=https://github.com/ingydotnet/yaml-vim.git
+           dest=~/vim_files
+      tags: vim
+    - file: path=~/.vim/synta state=directory
+    - copy: src=~/vim_files/syntax/yaml.vim dest=~/.vim/syntax/yaml.vim
+      tags: vim
+    - file: path=~/.vim/scripts state=directory
+      tags: vim
+    - copy: src=~/vim_files/{{ item }} dest=~/.vim/scripts/{{ item }}
+      tags: vim
+      with_items:
+        - yamlsort.vim
+        - yamlsort.rb
+    - file: path=~/vim_files state=absent
+    - command: git config --global core.editor "vim"
+      tags: vim
+      tags: vim

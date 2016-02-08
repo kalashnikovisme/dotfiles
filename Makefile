@@ -1,5 +1,5 @@
 install_environment:
-	sudo ansible-playbook playbook.yml -i local -vv
+	sudo ansible-playbook playbook.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt-get install python-pip
 	echo | sudo apt-add-repository ppa:ansible/ansible
