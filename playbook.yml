@@ -1,0 +1,38 @@
+---
+- hosts: all
+  vars:
+    name: "Pavel Kalashnikov"
+    email: "kalashnikovisme@gmail.com"
+  tasks:
+    - command: git config --global user.email "{{ email }}"
+    - command: git config --global user.name "{{ name }}"
+    - apt: name={{ item }}
+      with_items:
+        - htop 
+        - graphviz 
+        - git 
+        - curl 
+        - build-essential 
+        - openssl 
+        - libreadline6 
+        - libreadline6-dev
+        - zlib1g 
+        - zlib1g-dev 
+        - libssl-dev 
+        - libyaml-dev 
+        - libreadline-dev 
+        - libsqlite3-dev 
+        - libxslt1-dev 
+        - libgdbm-dev 
+        - libncurses5-dev 
+        - automake 
+        - libtool 
+        - bison 
+        - libffi-dev 
+        - libsqlite3-0 
+        - libmysqlclient-dev 
+    - shell: "curl -sSL https://get.rvm.io | bash -s stable"
+      tags: rails
+    - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
+    - file: path="~/.gemrc" state=touch
+    - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'

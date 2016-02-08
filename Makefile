@@ -1,0 +1,7 @@
+install_environment:
+	sudo ansible-playbook playbook.yml -i local -vv
+install_ansible:
+	sudo apt-get install python-pip
+	echo | sudo apt-add-repository ppa:ansible/ansible
+	sudo apt-get update
+	sudo apt-get install ansible -y
