@@ -45,4 +45,3 @@ vmap <F10>y :w! ~/.vbuf<CR>
 nmap <F10>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
 nmap <F10>p :r ~/.vbuf<CR>
-autocmd vimenter * NERDTree

@@ -5,6 +5,13 @@
     email: "kalashnikovisme@gmail.com"
   roles:
     - role: azavea.postgresql
+    - role: rvm_io.rvm1-ruby
+      sudo: True
+      rvm1_user: 'someone'
+      rvm1_rvm_version: 'stable'
+      rvm1_rvm_check_for_updates: True
+      rvm1_rubies:
+        - '2.3'
   tasks: 
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
@@ -33,8 +40,6 @@
         - libffi-dev 
         - libsqlite3-0 
         - libmysqlclient-dev 
-    - shell: "curl -sSL https://get.rvm.io | bash -s stable"
-      tags: rails
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - file: path="~/.gemrc" state=touch
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
