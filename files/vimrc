@@ -20,6 +20,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
@@ -45,3 +46,4 @@ vmap <F10>y :w! ~/.vbuf<CR>
 nmap <F10>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
 nmap <F10>p :r ~/.vbuf<CR>
+map <C-n> :NERDTreeToggle<CR>
