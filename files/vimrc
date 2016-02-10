@@ -38,3 +38,7 @@ nmap <F10>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
 nmap <F10>p :r ~/.vbuf<CR>
 map <C-p> :NERDTreeToggle<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
