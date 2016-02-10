@@ -10,3 +10,4 @@
         - alias gd='git diff'
         - alias gap='git add -p'
         - alias ga='git add .'
+        - alias gco='git checkout'
