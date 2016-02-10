@@ -12,6 +12,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdtree'
+Plugin 'kchmck/vim-coffee-script'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>

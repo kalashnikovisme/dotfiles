@@ -4,3 +4,4 @@
     - file: path=~/.vimrc state=absent
     - copy: src={{ curdir }}/files/vimrc dest=~/.vimrc
     - command: "vim +BundleInstall +qall"
+    - command: "vim +PluginInstall +qall"

@@ -12,3 +12,8 @@
         - alias ga='git add .'
         - alias gco='git checkout'
         - alias gcF='git commit --amend'
+        - alias gbc='git checkout -b'
+        - alias gfs='git flow feature start'
+        - alias gff='git flow feature finish'
+        - alias grs='git flow release start'
+        - alias grf='git flow release finish'
