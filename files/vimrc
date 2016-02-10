@@ -37,4 +37,4 @@ vmap <F10>y :w! ~/.vbuf<CR>
 nmap <F10>y :.w! ~/.vbuf<CR>
 " "paste the contents of the buffer file
 nmap <F10>p :r ~/.vbuf<CR>
-map <C-n> :NERDTreeToggle<CR>
+map <C-p> :NERDTreeToggle<CR>
