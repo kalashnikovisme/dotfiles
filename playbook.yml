@@ -35,6 +35,7 @@
         - libffi-dev 
         - libsqlite3-0 
         - libmysqlclient-dev 
+        - aptitude
     #- shell: "curl -sSL https://get.rvm.io | bash -s stable --rails"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     #- shell: "rvm install ruby"
