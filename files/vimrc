@@ -10,17 +10,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-rails.git'
-Bundle 'junegunn/vim-easy-align'
 Bundle 'bling/vim-airline'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-repeat'
-Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
