@@ -49,6 +49,7 @@
       with_items:
         - gitignore
         - vimrc
+        - bashrc
     - command: 'git config --global core.excludesfile ~/.gitignore'
     - apt: name=git-flow
       sudo: True
