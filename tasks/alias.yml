@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - lineinfile: dest=~/.bashrc state=present line={{ item }}
+      with_items:
+        - alias gc='git commit'
+        - alias gp='git push'
+        - alias gpt='git push --tags'
+        - alias gs='git status'
+        - alias gd='git diff'
+        - alias gap='git add -p'
+        - alias ga='git add .'

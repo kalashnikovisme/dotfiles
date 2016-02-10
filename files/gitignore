@@ -8,3 +8,5 @@
 
 #Dolphin files
 *.directory
+
+*~

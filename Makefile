@@ -5,7 +5,11 @@ install_environment:
 install_ansible:
 	sudo apt-get install python-pip
 	echo | sudo apt-add-repository ppa:ansible/ansible
+	sudo apt-get upgrade	
 	sudo apt-get update
 	sudo apt-get install ansible -y
+	sudo apt-get install ansible-galaxy
 update_vim:
 	sudo ansible-playbook update_vim.yml -i local -vv -e curdir=$(CURDIR)
+update_aliases:
+	ansible-playbook tasks/alias.yml -i local -vv

@@ -10,6 +10,7 @@
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - apt: name={{ item }}
+      sudo: True
       with_items:
         - htop 
         - graphviz 
@@ -35,19 +36,23 @@
         - libsqlite3-0 
         - libmysqlclient-dev 
     #- shell: "curl -sSL https://get.rvm.io | bash -s stable --rails"
-    - shell: "rvm install ruby"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
+    #- shell: "rvm install ruby"
     - apt: name=bundler
       sudo: True
-    - file: path="~/.gemrc" state=touch
-      sudo: True
-    - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
+    #- file: path="~/.gemrc" state=touch
+    #  sudo: True
+    #- lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
     - file: src={{ curdir }}/files/{{ item }} dest=~/.{{ item }} state=link
       sudo: True
       with_items:
         - gitignore
         - vimrc
+    - command: 'git config --global core.excludesfile ~/.gitignore'
     - apt: name=git-flow
+      sudo: True
+    - apt: name=vim
+      sudo: True
     - apt: name=vim
       tags: vim
     - file: path="~/.vbuf" state=touch
@@ -55,7 +60,7 @@
     - git: repo=https://github.com/ingydotnet/yaml-vim.git
            dest=~/vim_files
       tags: vim
-    - file: path=~/.vim/synta state=directory
+    - file: path=~/.vim/syntax state=directory
     - copy: src=~/vim_files/syntax/yaml.vim dest=~/.vim/syntax/yaml.vim
       tags: vim
     - file: path=~/.vim/scripts state=directory
@@ -71,26 +76,30 @@
     - git: repo=https://github.com/gmarik/vundle.git 
            dest=~/.vim/bundle/vundle 
     - command: "vim +BundleInstall +qall"
-    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.4/main/pg_hba.conf
+    #- copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
     - apt: name={{ item }}
+      sudo: True
       with_items:
         - libpq-dev
         - libmagickwand-dev
         - nodejs
         - npm
     - command: "dpkg --add-architecture i386"
+      sudo: True
     - apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-    - apt: update_cache=yes
-      ignore_errors: True
-    - apt: name=skype
+      sudo: True
     - command: "npm config set registry http://registry.npmjs.org/"
+    - command: sudo apt-get -f install
     - apt: name={{ item }}
+      sudo: True
       with_items:
         - nvidia-331
         - nvidia-settings
         - nvidia-prime
         - gimp
         - gnome-tweak-tool
+    - command: pip install --upgrade pip
+      sudo: True
     - git: repo=https://github.com/wakatime/gedit-wakatime dest=~/gedit-wakatime
       tags: wakatime
     - get_url: url=https://bootstrap.pypa.io/get-pip.py dest=~/get-pip.py
@@ -99,3 +108,4 @@
       tags: wakatime
     - command: python ~/gedit-wakatime/install.py
       tags: wakatime
+    - include: tasks/alias.yml
