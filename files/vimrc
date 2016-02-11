@@ -2,9 +2,6 @@ set nu
 set sw=2
 set sts=2
 let g:fuzzy_ignore = "gems/*"
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-nnoremap <f3> :TlistToggle<cr>
-nnoremap <f2> :NERDTreeToggle<CR>
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -15,6 +12,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Bundle 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/syntastic'
+Bundle "tpope/vim-rails.git"
+Bundle "slim-template/vim-slim.git"
+Bundle "pangloss/vim-javascript"
+Plugin 'Shougo/neocomplete.vim'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
