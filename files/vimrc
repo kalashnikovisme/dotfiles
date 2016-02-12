@@ -18,8 +18,8 @@ Plugin 'Shougo/neocomplete.vim'
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
-imap <F3> <Esc>:q<CR>
-map <F3> <Esc>:q<CR>
+imap <F3> <Esc>:q!<CR>
+map <F3> <Esc>:q!<CR>
 imap <F4> <Esc>:wq<CR>
 map <F4> <Esc>:wq<CR>
 imap <F5> <Esc>:set paste<CR>
