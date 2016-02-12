@@ -12,7 +12,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Bundle 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/syntastic'
-Bundle "tpope/vim-rails.git"
 Bundle "slim-template/vim-slim.git"
 Bundle "pangloss/vim-javascript"
 Plugin 'Shougo/neocomplete.vim'

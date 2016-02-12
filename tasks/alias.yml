@@ -18,3 +18,5 @@
         - alias grs='git flow release start'
         - alias grf='git flow release finish'
         - alias gups='git push --set-upstream origin'
+        - alias glt='git describe --abbrev=0 --tags'
+        - alias gplr='git pull --rebase'
