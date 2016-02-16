@@ -20,3 +20,5 @@
         - alias gups='git push --set-upstream origin'
         - alias glt='git describe --abbrev=0 --tags'
         - alias gplr='git pull --rebase'
+        - alias dr='git checkout develop && git push && git checkout master && git push && git push --tags && cap production deploy'
+        - alias dro='git checkout develop && git push && git checkout master && git push && git push --tags && cap deploy'

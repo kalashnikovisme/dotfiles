@@ -15,6 +15,7 @@ Plugin 'scrooloose/syntastic'
 Bundle "slim-template/vim-slim.git"
 Bundle "pangloss/vim-javascript"
 Plugin 'Shougo/neocomplete.vim'
+Bundle "tpope/vim-rails.git"
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
