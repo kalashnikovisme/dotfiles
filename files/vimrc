@@ -12,8 +12,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Bundle 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/syntastic'
-Bundle "slim-template/vim-slim.git"
-Bundle "pangloss/vim-javascript"
 Plugin 'Shougo/neocomplete.vim'
 Bundle "tpope/vim-rails.git"
 filetype plugin indent on
@@ -47,3 +45,4 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 let g:neocomplete#enable_at_startup = 2
+au BufRead,BufNewFile *.thor set syntax=ruby
