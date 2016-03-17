@@ -116,3 +116,18 @@
     - command: python ~/gedit-wakatime/install.py
       tags: wakatime
     - include: tasks/alias.yml
+
+    - name: Add Heroku release key for package verification
+      sudo: yes
+      action: apt_key url=https://toolbelt.heroku.com/apt/release.key state=present
+      tags: heroku
+
+    - name: Add Heroku APT repository
+      tags: heroku
+      sudo: yes
+      action: apt_repository repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present
+
+    - name: Install Heroku toolbelt
+      tags: heroku
+      sudo: yes
+      action: apt name=heroku-toolbelt state=latest update_cache=yes cache_valid_time=86400
