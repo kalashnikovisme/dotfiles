@@ -12,7 +12,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
 Bundle "tpope/vim-rails.git"
-filetype plugin indent on
+Bundle 'slim-template/vim-slim.git'
+syntax enable
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
 imap <F3> <Esc>:q!<CR>
@@ -44,6 +45,3 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 let g:neocomplete#enable_at_startup = 2
 au BufRead,BufNewFile *.thor set syntax=ruby
-set expandtab
-set shiftwidth=2
-set softtabstop=2

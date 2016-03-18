@@ -22,3 +22,4 @@
         - alias gplr='git pull --rebase'
         - alias dr='git checkout develop && git push && git checkout master && git push && git push --tags && cap production deploy'
         - alias dro='git checkout develop && git push && git checkout master && git push && git push --tags && cap deploy'
+        - alias drh='git checkout develop && git push && git checkout master && git push && git push --tags && git push heroku master'
