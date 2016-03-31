@@ -46,4 +46,4 @@ nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 let g:neocomplete#enable_at_startup = 2
 au BufRead,BufNewFile *.thor set syntax=ruby
-au BufRead,BufNewFile *.es6 set syntax=javascript
+au BufRead,BufNewFile *.es6 set filetype=javascript
