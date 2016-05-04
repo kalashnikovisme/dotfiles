@@ -1,4 +1,5 @@
 set nu
+set expandtab
 set sw=2
 set sts=2
 let g:fuzzy_ignore = "gems/*"
@@ -13,6 +14,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
 Bundle "tpope/vim-rails.git"
 Bundle 'slim-template/vim-slim.git'
+Plugin 'isRuslan/vim-es6'
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
