@@ -10,3 +10,6 @@
 *.directory
 
 *~
+
+#Byebug
+.byebug_history
