@@ -116,8 +116,6 @@
       tags: wakatime
     - command: python ~/gedit-wakatime/install.py
       tags: wakatime
-    - include: tasks/alias.yml
-
     - name: Add Heroku release key for package verification
       sudo: yes
       action: apt_key url=https://toolbelt.heroku.com/apt/release.key state=present
