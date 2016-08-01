@@ -3,9 +3,6 @@
   vars:
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
-  roles:
-    - role: azavea.postgresql
-      sudo: True
   tasks: 
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
@@ -42,20 +39,20 @@
         - vim-gnome
         - vim-athena
         - vlc
-    #- shell: "curl -sSL https://get.rvm.io | bash -s stable --rails"
+        - postgresql
+    #- command: "curl -sSL https://get.rvm.io | bash -s stable --rails"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
-    #- shell: "rvm install ruby"
     - apt: name=bundler
       sudo: True
-    #- file: path="~/.gemrc" state=touch
-    #  sudo: True
-    #- lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
-    - file: src={{ curdir }}/files/{{ item }} dest=~/.{{ item }} state=link
+    - command: "touch /home/pavel/.gemrc"
       sudo: True
-      with_items:
-        - gitignore
-        - vimrc
-        - bashrc
+    - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
+    #- file: src={{ curdir }}/files/{{ item }} dest=~/.{{ item }} state=link
+    #sudo: True
+    #with_items:
+    #    - gitignore
+    #    - vimrc
+    #    - bashrc
     - command: 'git config --global core.excludesfile ~/.gitignore'
     - apt: name=git-flow
       sudo: True
@@ -94,16 +91,13 @@
         - npm
     - command: "dpkg --add-architecture i386"
       sudo: True
-    - apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-      sudo: True
-    - command: "npm config set registry http://registry.npmjs.org/"
+    #- apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+    #  sudo: True
+    #- command: "npm config set registry http://registry.npmjs.org/"
     - command: sudo apt-get -f install
     - apt: name={{ item }}
       sudo: True
       with_items:
-        - nvidia-331
-        - nvidia-settings
-        - nvidia-prime
         - gimp
         - gnome-tweak-tool
     - command: pip install --upgrade pip
@@ -121,12 +115,12 @@
       action: apt_key url=https://toolbelt.heroku.com/apt/release.key state=present
       tags: heroku
 
-    - name: Add Heroku APT repository
-      tags: heroku
-      sudo: yes
-      action: apt_repository repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present
+    #- name: Add Heroku APT repository
+    #  tags: heroku
+    #  sudo: yes
+    #  action: apt_repository repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present
 
-    - name: Install Heroku toolbelt
-      tags: heroku
-      sudo: yes
-      action: apt name=heroku-toolbelt state=latest update_cache=yes cache_valid_time=86400
+    #- name: Install Heroku toolbelt
+    #  tags: heroku
+    #  sudo: yes
+    #  action: apt name=heroku-toolbelt state=latest update_cache=yes cache_valid_time=86400
