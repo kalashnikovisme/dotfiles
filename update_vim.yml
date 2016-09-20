@@ -5,3 +5,9 @@
     - copy: src={{ curdir }}/files/vimrc dest=~/.vimrc
     - command: "vim +BundleInstall +qall"
     - command: "vim +PluginInstall +qall"
+    - name: Install auto-pairs plugin
+    - git: repo=https://github.com/jiangmiao/auto-pairs.git
+           dest={{ curdir }}
+    - file: path=~/.vim/plugin/ state=directory
+    - copy: src={{ curdir }}/auto-pairs/plugin/auto-pairs.vim
+            dest=~/.vim/plugin/
