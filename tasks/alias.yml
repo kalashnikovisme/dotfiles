@@ -26,3 +26,4 @@
         - alias drh='git checkout develop && git push && git checkout master && git push && git push --tags && git push heroku master && heroku run rake db:migrate'
         - alias pg='git checkout develop && git push && git checkout master && git push && git push --tags && gem build $(basename "$PWD").gemspec && gem push *.gem'
         - alias vpn='sudo openvpn --config'
+        - alias gce='git commit --allow-empty -m "Empty commit"'
