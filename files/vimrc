@@ -16,6 +16,7 @@ Bundle "tpope/vim-rails.git"
 Bundle 'slim-template/vim-slim.git'
 Plugin 'isRuslan/vim-es6'
 Plugin 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
