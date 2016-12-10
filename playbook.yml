@@ -41,6 +41,7 @@
         - vlc
         - postgresql
         - unetbootin
+        - gparted
     #- command: "curl -sSL https://get.rvm.io | bash -s stable --rails"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - apt: name=bundler
