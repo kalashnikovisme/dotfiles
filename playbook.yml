@@ -44,6 +44,7 @@
         - gparted
         - arduino
         - arduino-core 
+        - python-pip
     #- command: "curl -sSL https://get.rvm.io | bash -s stable --rails"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - apt: name=bundler
@@ -84,12 +85,7 @@
       tags: vim
     - git: repo=https://github.com/gmarik/vundle.git 
            dest=~/.vim/bundle/vundle 
-    - name: Install auto-pairs plugin
-      git: repo=https://github.com/jiangmiao/auto-pairs.git
-           dest={{ curdir }}
     - file: path=~/.vim/plugin/ state=directory force=yes
-    - copy: src={{ curdir }}/auto-pairs/plugin/auto-pairs.vim
-            dest=~/.vim/plugin/
     - command: "vim +BundleInstall +qall"
     #- copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
     - apt: name={{ item }}
