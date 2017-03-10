@@ -18,6 +18,7 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'leafgarland/typescript-vim'
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
