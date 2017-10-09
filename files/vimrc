@@ -20,6 +20,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'mxw/vim-jsx'
+Bundle 'tpope/vim-markdown'
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
