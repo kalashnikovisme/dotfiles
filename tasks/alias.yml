@@ -28,4 +28,5 @@
         - alias vpn='sudo openvpn --config'
         - alias fuck='sudo !!'
         - alias mngs='sudo systemctl start mongodb && mongod && sudo service mongodb status'
+        - alias gpdm='git push origin develop && git push origin master'
         - alias gce='git commit --allow-empty -m "Empty commit"'
