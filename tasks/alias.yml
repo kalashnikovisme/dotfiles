@@ -25,6 +25,7 @@
         - alias dro='git checkout develop && git push && git checkout master && git push && git push --tags && cap deploy'
         - alias drh='git checkout develop && git push && git checkout master && git push && git push --tags && git push heroku master && heroku run rake db:migrate'
         - alias pg='rm -rf *.gem && gem build $(basename "$PWD").gemspec && gem push *.gem'
+        - alias pga='for D in *; do [ -d "${D}" ] && cd "${D}" && (pg || true) && cd ..;  done'
         - alias vpn='sudo openvpn --config'
         - alias fuck='sudo !!'
         - alias mngs='sudo systemctl start mongodb && mongod && sudo service mongodb status'

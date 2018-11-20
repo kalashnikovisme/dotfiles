@@ -2,6 +2,7 @@ set nu
 set expandtab
 set sw=2
 set sts=2
+set tabstop=2
 let g:fuzzy_ignore = "gems/*"
 set nocompatible
 filetype off
