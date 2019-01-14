@@ -10,13 +10,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/neocomplete.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplete.vim'
 Bundle "tpope/vim-rails.git"
 Bundle 'slim-template/vim-slim.git'
-Plugin 'isRuslan/vim-es6'
-Plugin 'tpope/vim-fugitive'
+Bundle 'isRuslan/vim-es6'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'leafgarland/typescript-vim'
@@ -58,4 +58,5 @@ au BufRead,BufNewFile *.thor set syntax=ruby
 au BufRead,BufNewFile *.simplecov set syntax=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.vue set filetype=javascript
+au BufRead,BufNewFile *.vue set syntax=javascript
 au BufRead,BufNewFile *.go set tabstop=2
