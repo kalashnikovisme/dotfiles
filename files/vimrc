@@ -58,3 +58,4 @@ au BufRead,BufNewFile *.thor set syntax=ruby
 au BufRead,BufNewFile *.simplecov set syntax=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.vue set filetype=javascript
+au BufRead,BufNewFile *.go set tabstop=2
