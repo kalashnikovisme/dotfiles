@@ -2,7 +2,6 @@ set nu
 set expandtab
 set sw=2
 set sts=2
-set tabstop=2
 let g:fuzzy_ignore = "gems/*"
 set nocompatible
 filetype off
@@ -60,3 +59,4 @@ au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.vue set filetype=javascript
 au BufRead,BufNewFile *.vue set syntax=javascript
 au BufRead,BufNewFile *.go set tabstop=2
+au BufRead,BufNewFile Makefile set tabstop=2
