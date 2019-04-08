@@ -15,7 +15,6 @@
         - curl 
         - build-essential 
         - openssl 
-        - libreadline6 
         - libreadline6-dev
         - zlib1g 
         - zlib1g-dev 
