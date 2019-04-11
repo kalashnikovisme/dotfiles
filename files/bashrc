@@ -109,3 +109,5 @@ export PS1='\e[1;32m\w$(__git_ps1 "(%s)"): '
 if [ -f /etc/bash_completion  ]; then
   . /etc/bash_completion
 fi
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
