@@ -22,6 +22,7 @@ Bundle 'leafgarland/typescript-vim'
 Bundle 'mxw/vim-jsx'
 Bundle 'wakatime/vim-wakatime'
 Bundle 'sebdah/vim-delve'
+Bundle 'posva/vim-vue'
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>

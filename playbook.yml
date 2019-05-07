@@ -94,6 +94,7 @@
         - libmagickwand-dev
         - nodejs
         - npm
+        - yarn
     - command: "dpkg --add-architecture i386"
       sudo: True
     #- apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
