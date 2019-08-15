@@ -1,3 +1,3 @@
-# [github.com/kalashnikovisme](@kalashnikovisme) environment installation
+# [@kalashnikovisme](github.com/kalashnikovisme) environment installation
 
 Just run `sh main.sh`
