@@ -1,5 +1,5 @@
 sudo apt-get update
 sudo apt-get install make
 make install_ansible
-sudo chown -R $USER ~/.ansible/tmp
+sudo chown -R $USER ~/.ansible/
 make install_environment
