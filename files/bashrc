@@ -36,7 +36,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -105,7 +105,7 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/go/bin # Add Go to PATH
 source ~/.rvm/scripts/rvm
-export PS1='\w$(__git_ps1 "(%s)") [\D{%H:%M}]: '
+export PS1='\[\033[36m\]\w$(__git_ps1 "\[\033[32m\](%s)") \[\033[34m\][\D{%H:%M}]: \[\033[37m\]'
 if [ -f /etc/bash_completion  ]; then
   . /etc/bash_completion
 fi

@@ -12,4 +12,4 @@ update_vim:
 update_aliases:
 	ansible-playbook tasks/alias.yml -i local -vv
 update_bash:
-	cp files/bashrc ~/.bashrc
+	cp -f ./files/bashrc ~/.bashrc
