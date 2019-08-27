@@ -44,7 +44,7 @@
         - arduino
         - arduino-core 
         - python-pip
-    #- command: "curl -sSL https://get.rvm.io | bash -s stable --rails"
+    - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - apt: name=bundler
       sudo: True
