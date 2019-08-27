@@ -46,7 +46,6 @@
         - python-pip
         - ffmpeg
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
-    - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - command: "touch /home/pavel/.gemrc"
       sudo: True
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
@@ -85,7 +84,7 @@
            dest=~/.vim/bundle/vundle 
     - file: path=~/.vim/plugin/ state=directory force=yes
     - command: "vim +BundleInstall +qall"
-    #- copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
+    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
     - apt: name={{ item }}
       sudo: True
       with_items:
@@ -109,3 +108,7 @@
     - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
     - shell: "sudo apt-get update"
     - shell: "sudo apt-get install google-chrome-stable"
+    - copy:
+        src: "{{ curdir }}/files/bashrc"
+        dest: "~/.bashrc"
+    - shell: "source ~/.bashrc"

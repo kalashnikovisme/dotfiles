@@ -11,3 +11,5 @@ update_vim:
 	ansible-playbook update_vim.yml -i local -vv -e curdir=$(CURDIR)
 update_aliases:
 	ansible-playbook tasks/alias.yml -i local -vv
+update_bash:
+	cp files/bashrc ~/.bashrc
