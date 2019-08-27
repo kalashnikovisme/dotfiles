@@ -8,6 +8,6 @@ install_ansible:
 	sudo apt-get update
 	sudo apt-get install ansible
 update_vim:
-	sudo ansible-playbook update_vim.yml -i local -vv -e curdir=$(CURDIR)
+	ansible-playbook update_vim.yml -i local -vv -e curdir=$(CURDIR)
 update_aliases:
 	ansible-playbook tasks/alias.yml -i local -vv

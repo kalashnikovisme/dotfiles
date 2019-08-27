@@ -104,27 +104,7 @@
       with_items:
         - gimp
         - gnome-tweak-tool
-    - command: pip install --upgrade pip
-      sudo: True
-    - git: repo=https://github.com/wakatime/gedit-wakatime dest=~/gedit-wakatime
-      tags: wakatime
-    - get_url: url=https://bootstrap.pypa.io/get-pip.py dest=~/get-pip.py
-      tags: wakatime
-    - command: python ~/get-pip.py
-      tags: wakatime
-    - command: python ~/gedit-wakatime/install.py
-      tags: wakatime
-    - name: Add Heroku release key for package verification
-      sudo: yes
-      action: apt_key url=https://toolbelt.heroku.com/apt/release.key state=present
-      tags: heroku
-
-    #- name: Add Heroku APT repository
-    #  tags: heroku
-    #  sudo: yes
-    #  action: apt_repository repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present
-
-    #- name: Install Heroku toolbelt
-    #  tags: heroku
-    #  sudo: yes
-    #  action: apt name=heroku-toolbelt state=latest update_cache=yes cache_valid_time=86400
+    - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
+    - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
+    - shell: "sudo apt-get update"
+    - shell: "sudo apt-get install google-chrome-stable"
