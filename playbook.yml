@@ -46,8 +46,6 @@
         - python-pip
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
-    - apt: name=bundler
-      sudo: True
     - command: "touch /home/pavel/.gemrc"
       sudo: True
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
