@@ -44,6 +44,7 @@
         - arduino
         - arduino-core 
         - python-pip
+        - ffmpeg
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - lineinfile: line="source /home/pavel/.rvm/scripts/rvm" dest="~/.bashrc" state=present
     - command: "touch /home/pavel/.gemrc"
