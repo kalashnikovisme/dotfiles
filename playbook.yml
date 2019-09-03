@@ -84,7 +84,7 @@
            dest=~/.vim/bundle/vundle 
     - file: path=~/.vim/plugin/ state=directory force=yes
     - command: "vim +BundleInstall +qall"
-    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/9.5/main/pg_hba.conf
+    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/$(psql --version | grep -o "[0-9]*\.[0-9]*" | head -1)/main/pg_hba.conf
     - apt: name={{ item }}
       sudo: True
       with_items:
@@ -112,3 +112,6 @@
         src: "{{ curdir }}/files/bashrc"
         dest: "~/.bashrc"
     - shell: "source ~/.bashrc"
+    - copy:
+        src: "{{ curdir }}/files/gitignore"
+        dest: "~/.gitignore"
