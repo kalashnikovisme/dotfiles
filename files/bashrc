@@ -111,3 +111,4 @@ if [ -f /etc/bash_completion  ]; then
 fi
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
+PROMPT_COMMAND='echo -ne "\033]0;$(dirs)\007"'

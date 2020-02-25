@@ -45,6 +45,7 @@
         - arduino-core 
         - python-pip
         - ffmpeg
+        - docker.io
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - command: "touch /home/pavel/.gemrc"
       sudo: True
