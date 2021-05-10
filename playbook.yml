@@ -4,46 +4,46 @@
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
   tasks: 
-    - apt: name={{ item }}
-      sudo: True
-      with_items:
-        - htop 
-        - graphviz 
-        - git 
-        - curl 
-        - build-essential 
-        - openssl 
-        - libreadline6-dev
-        - zlib1g 
-        - zlib1g-dev 
-        - libssl-dev 
-        - libyaml-dev 
-        - libreadline-dev 
-        - libsqlite3-dev 
-        - libxslt1-dev 
-        - libgdbm-dev 
-        - libncurses5-dev 
-        - automake 
-        - libtool 
-        - bison 
-        - libffi-dev 
-        - libsqlite3-0 
-        - libmysqlclient-dev 
-        - aptitude
-        - openvpn
-        - vim-nox
-        - vim-gtk
-        - vim-gnome
-        - vim-athena
-        - vlc
-        - postgresql
-        - unetbootin
-        - gparted
-        - arduino
-        - arduino-core 
-        - python-pip
-        - ffmpeg
-        - docker.io
+    - apt:
+        sudo: True
+        pkg:
+          - htop 
+          - graphviz 
+          - git 
+          - curl 
+          - build-essential 
+          - openssl 
+          - libreadline6-dev
+          - zlib1g 
+          - zlib1g-dev 
+          - libssl-dev 
+          - libyaml-dev 
+          - libreadline-dev 
+          - libsqlite3-dev 
+          - libxslt1-dev 
+          - libgdbm-dev 
+          - libncurses5-dev 
+          - automake 
+          - libtool 
+          - bison 
+          - libffi-dev 
+          - libsqlite3-0 
+          - libmysqlclient-dev 
+          - aptitude
+          - openvpn
+          - vim-nox
+          - vim-gtk
+          - vim-gnome
+          - vim-athena
+          - vlc
+          - postgresql
+          - unetbootin
+          - gparted
+          - arduino
+          - arduino-core 
+          - python-pip
+          - ffmpeg
+          - docker.io
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
