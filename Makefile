@@ -1,7 +1,3 @@
-all:
-  sudo apt install make
-  install_ansible
-  install_environment
 install_environment:
 	sudo ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	ansible-playbook pre_playbook.yml -i local -vv -e curdir=$(CURDIR)
