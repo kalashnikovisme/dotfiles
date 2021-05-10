@@ -4,8 +4,6 @@
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
   tasks: 
-    - command: git config --global user.email "{{ email }}"
-    - command: git config --global user.name "{{ name }}"
     - apt: name={{ item }}
       sudo: True
       with_items:
@@ -46,6 +44,8 @@
         - python-pip
         - ffmpeg
         - docker.io
+    - command: git config --global user.email "{{ email }}"
+    - command: git config --global user.name "{{ name }}"
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - command: "touch /home/pavel/.gemrc"
       sudo: True
