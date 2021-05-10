@@ -1,7 +1,0 @@
----
-- hosts: all
-  tasks: 
-    - apt: name={{ item }}
-      sudo: True
-      with_items:
-        - git-core
