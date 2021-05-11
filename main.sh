@@ -1,3 +1,5 @@
+echo 'Upgrade apt'
+sudo apt-get -y upgrade
 echo 'Add repository'
 sudo add-apt-repository -y ppa:gezakovacs/ppa
 echo 'apt-get update'
