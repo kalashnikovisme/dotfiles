@@ -46,6 +46,7 @@
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
+    - command: "gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB"
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - command: "touch /home/pavel/.gemrc"
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
@@ -54,6 +55,7 @@
         pkg:
           - git-flow
           - vim
+      become: true
     - file:
         path: "~/.vbuf"
         state: touch
@@ -62,13 +64,15 @@
         dest: ~/vim_files
       tags: vim
     - file:
-        path: ~/.vim/syntax state=directory
+        path: ~/.vim/syntax
+        state: directory
     - copy:
         src: ~/vim_files/syntax/yaml.vim
         dest: ~/.vim/syntax/yaml.vim
       tags: vim
     - file:
-        path: ~/.vim/scripts state=directory
+        path: ~/.vim/scripts
+        state: directory
       tags: vim
     - copy:
         src: ~/vim_files/{{ item }}
@@ -92,7 +96,8 @@
     - command: "vim +BundleInstall +qall"
     - copy:
         src: "{{ curdir }}/files/pg_hba.conf"
-        dest: /etc/postgresql/$(psql --version | grep -o "[0-9]*\.[0-9]*" | head -1)/main/pg_hba.conf
+        dest: /etc/postgresql/12/main/pg_hba.conf
+      become: true
     - apt:
         pkg:
           - libpq-dev
@@ -100,12 +105,15 @@
           - nodejs
           - npm
           - yarn
+      become: true
     - command: "dpkg --add-architecture i386"
+      become: true
     - command: sudo apt-get -f install
     - apt:
         pkg:
           - gimp
           - gnome-tweak-tool
+      become: true
     - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
     - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
     - shell: "sudo apt-get update"
@@ -113,7 +121,7 @@
     - copy:
         src: "{{ curdir }}/files/bashrc"
         dest: "~/.bashrc"
-    - shell: "source ~/.bashrc"
+    - command: "/bin/bash -lic 'source ~/.bashrc'"
     - copy:
         src: "{{ curdir }}/files/gitignore"
         dest: "~/.gitignore"
