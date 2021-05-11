@@ -4,107 +4,108 @@
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
   tasks: 
-    - apt:
-        sudo: True
+    - name: Install first batch of needed packages
+      apt:
         pkg:
-          - htop 
-          - graphviz 
-          - git 
-          - curl 
-          - build-essential 
-          - openssl 
-          - libreadline6-dev
-          - zlib1g 
-          - zlib1g-dev 
-          - libssl-dev 
-          - libyaml-dev 
-          - libreadline-dev 
-          - libsqlite3-dev 
-          - libxslt1-dev 
-          - libgdbm-dev 
-          - libncurses5-dev 
-          - automake 
-          - libtool 
-          - bison 
-          - libffi-dev 
-          - libsqlite3-0 
-          - libmysqlclient-dev 
-          - aptitude
-          - openvpn
-          - vim-nox
-          - vim-gtk
-          - vim-gnome
-          - vim-athena
-          - vlc
-          - postgresql
-          - unetbootin
-          - gparted
-          - arduino
-          - arduino-core 
-          - python-pip
-          - ffmpeg
-          - docker.io
+        - htop 
+        - graphviz 
+        - git 
+        - curl 
+        - build-essential 
+        - openssl 
+        - libreadline6-dev
+        - zlib1g 
+        - zlib1g-dev 
+        - libssl-dev 
+        - libyaml-dev 
+        - libreadline-dev 
+        - libsqlite3-dev 
+        - libxslt1-dev 
+        - libgdbm-dev 
+        - libncurses5-dev 
+        - automake 
+        - libtool 
+        - bison 
+        - libffi-dev 
+        - libsqlite3-0 
+        - libmysqlclient-dev 
+        - aptitude
+        - openvpn
+        - vim-nox
+        - vim-gtk
+        - vim-gtk3
+        - vim-athena
+        - vlc
+        - postgresql
+        - unetbootin
+        - gparted
+        - arduino
+        - arduino-core
+        - ffmpeg
+        - docker.io
+      become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
     - command: "touch /home/pavel/.gemrc"
-      sudo: True
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
-    #- file: src={{ curdir }}/files/{{ item }} dest=~/.{{ item }} state=link
-    #sudo: True
-    #with_items:
-    #    - gitignore
-    #    - vimrc
-    #    - bashrc
     - command: 'git config --global core.excludesfile ~/.gitignore'
-    - apt: name=git-flow
-      sudo: True
-    - apt: name=vim
-      sudo: True
-    - apt: name=vim
+    - apt:
+        pkg:
+          - git-flow
+          - vim
+    - file:
+        path: "~/.vbuf"
+        state: touch
+    - git:
+        repo: https://github.com/ingydotnet/yaml-vim.git
+        dest: ~/vim_files
       tags: vim
-    - file: path="~/.vbuf" state=touch
-      sudo: True
-    - git: repo=https://github.com/ingydotnet/yaml-vim.git
-           dest=~/vim_files
+    - file:
+        path: ~/.vim/syntax state=directory
+    - copy:
+        src: ~/vim_files/syntax/yaml.vim
+        dest: ~/.vim/syntax/yaml.vim
       tags: vim
-    - file: path=~/.vim/syntax state=directory
-    - copy: src=~/vim_files/syntax/yaml.vim dest=~/.vim/syntax/yaml.vim
+    - file:
+        path: ~/.vim/scripts state=directory
       tags: vim
-    - file: path=~/.vim/scripts state=directory
-      tags: vim
-    - copy: src=~/vim_files/{{ item }} dest=~/.vim/scripts/{{ item }}
+    - copy:
+        src: ~/vim_files/{{ item }}
+        dest: ~/.vim/scripts/{{ item }}
       tags: vim
       with_items:
         - yamlsort.vim
         - yamlsort.rb
-    - file: path=~/vim_files state=absent
+    - file:
+        path: ~/vim_files
+        state: absent
     - command: git config --global core.editor "vim"
       tags: vim
-    - git: repo=https://github.com/gmarik/vundle.git 
-           dest=~/.vim/bundle/vundle 
-    - file: path=~/.vim/plugin/ state=directory force=yes
+    - git:
+        repo: https://github.com/gmarik/vundle.git 
+        dest: ~/.vim/bundle/vundle 
+    - file:
+        path: ~/.vim/plugin/
+        state: directory
+        force: yes
     - command: "vim +BundleInstall +qall"
-    - copy: src={{ curdir }}/files/pg_hba.conf dest=/etc/postgresql/$(psql --version | grep -o "[0-9]*\.[0-9]*" | head -1)/main/pg_hba.conf
-    - apt: name={{ item }}
-      sudo: True
-      with_items:
-        - libpq-dev
-        - libmagickwand-dev
-        - nodejs
-        - npm
-        - yarn
+    - copy:
+        src: "{{ curdir }}/files/pg_hba.conf"
+        dest: /etc/postgresql/$(psql --version | grep -o "[0-9]*\.[0-9]*" | head -1)/main/pg_hba.conf
+    - apt:
+        pkg:
+          - libpq-dev
+          - libmagickwand-dev
+          - nodejs
+          - npm
+          - yarn
     - command: "dpkg --add-architecture i386"
-      sudo: True
-    #- apt_repository: repo="deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-    #  sudo: True
-    #- command: "npm config set registry http://registry.npmjs.org/"
     - command: sudo apt-get -f install
-    - apt: name={{ item }}
-      sudo: True
-      with_items:
-        - gimp
-        - gnome-tweak-tool
+    - apt:
+        pkg:
+          - gimp
+          - gnome-tweak-tool
     - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
     - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
     - shell: "sudo apt-get update"
