@@ -6,6 +6,7 @@ install_ansible:
 	sudo apt-add-repository -y ppa:ansible/ansible
 	sudo apt-get update
 	sudo apt-get install ansible
+	ansible-galaxy collection install community.general
 update_vim:
 	ansible-playbook update_vim.yml -i local -vv -e curdir=$(CURDIR)
 update_aliases:

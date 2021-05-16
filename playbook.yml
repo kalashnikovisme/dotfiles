@@ -125,7 +125,6 @@
     - copy:
         src: "{{ curdir }}/files/gitignore"
         dest: "~/.gitignore"
-    - name: Install foo
-      community.general.snap:
+    - community.general.snap:
         name:
           - rocketchat-desktop
