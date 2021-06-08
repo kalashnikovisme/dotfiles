@@ -112,3 +112,6 @@ fi
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 PROMPT_COMMAND='echo -ne "\033]0;$(dirs)\007"'
+replace() {
+  find . -type f -exec sed -i "s/$1/$2/g" {} +
+}
