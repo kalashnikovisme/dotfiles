@@ -43,6 +43,9 @@
         - arduino-core
         - ffmpeg
         - docker.io
+        - net-tools
+        - libpq-dev
+        - ruby-dev
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
