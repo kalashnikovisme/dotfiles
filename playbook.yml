@@ -49,7 +49,7 @@
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
-    - shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby"
+    - shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
     - command: "touch /home/pavel/.gemrc"
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
     - command: 'git config --global core.excludesfile ~/.gitignore'
@@ -127,6 +127,3 @@
     - copy:
         src: "{{ curdir }}/files/gitignore"
         dest: "~/.gitignore"
-    - community.general.snap:
-        name:
-          - rocketchat-desktop
