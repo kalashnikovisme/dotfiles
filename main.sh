@@ -11,8 +11,4 @@ make install_ansible
 echo 'Set needed permissions for ansible'
 sudo chown -R $USER ~/.ansible/
 echo 'Install environment'
-make install_environment
-echo 'Configurate VIM'
-make update_vim
-echo 'Configurate aliases'
-make update_aliases
+make install_environment && make update_vim && make update_aliases
