@@ -1,6 +1,6 @@
 # [@kalashnikovisme](github.com/kalashnikovisme) environment installation
 
-Just run `sh main.sh`
+Just run `./main.sh`
 
 ## What is it?
 
