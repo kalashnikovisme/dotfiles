@@ -23,10 +23,18 @@
         - libxslt1-dev 
         - libgdbm-dev 
         - libncurses5-dev 
+        - libncursesw5-dev 
+        - libbz2-dev
+        - libsqlite3-dev
+        - llvm 
+        - xz-utils 
+        - tk-dev 
         - automake 
         - libtool 
         - bison 
         - libffi-dev 
+        - liblzma-dev 
+        - python-openssl
         - libsqlite3-0 
         - libmysqlclient-dev 
         - aptitude
@@ -128,3 +136,7 @@
     - copy:
         src: "{{ curdir }}/files/gitignore"
         dest: "~/.gitignore"
+    - name: Install pyenv
+      git:
+        repo: https://github.com/pyenv/pyenv
+        dest: ~/.pyenv
