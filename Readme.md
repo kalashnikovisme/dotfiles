@@ -36,6 +36,7 @@ It installs Ansible and use Ansible playbook to install other applications
 20. Google Chrome
 21. Rocket.Chat Desktop
 22. pyenv
+23. cmake
 
 ### Configurations
 
