@@ -1,0 +1,7 @@
+- hosts: all
+  become_user: root
+  tasks: 
+    - name: Add nodejs sources
+      shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    - name: Install Nodejs
+      command: apt-get install -y nodejs
