@@ -35,6 +35,7 @@ It installs Ansible and use Ansible playbook to install other applications
 19. Ubuntu Tweaks
 20. Google Chrome
 21. Rocket.Chat Desktop
+22. pyenv
 
 ### Configurations
 
