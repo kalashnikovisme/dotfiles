@@ -55,6 +55,7 @@
         - libpq-dev
         - ruby-dev
         - redis-server
+        - cmake
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
