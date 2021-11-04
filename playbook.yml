@@ -115,7 +115,6 @@
           - libpq-dev
           - libmagickwand-dev
           - nodejs
-          - npm
           - yarn
       become: true
     - command: "dpkg --add-architecture i386"

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - name: Add audacity repo
+      apt_repository:
+        repo: "ppa:ubuntuhandbook1/audacity"
+        state: present
+
+
+    - name: Install audacity
+      apt:
+        pkg: audacity
