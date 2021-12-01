@@ -104,6 +104,7 @@ fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/go/bin # Add Go to PATH
+PATH=$PATH:$HOME/.pyenv/shims
 source ~/.rvm/scripts/rvm
 export PS1='\[\033[36m\]\w$(__git_ps1 "\[\033[32m\](%s)") \[\033[34m\][\D{%H:%M}]: \[\033[37m\]'
 if [ -f /etc/bash_completion  ]; then
