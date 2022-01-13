@@ -1,7 +1,5 @@
 - hosts: all
   become_user: root
   tasks: 
-    - name: Add nodejs sources
-      shell: curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    - name: Install Nodejs
-      command: apt-get install -y nodejs
+    - name: Install nvm
+      shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
