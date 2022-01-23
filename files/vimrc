@@ -27,6 +27,9 @@ Plug 'wakatime/vim-wakatime'
 Plug 'sebdah/vim-delve'
 Plug 'posva/vim-vue'
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 syntax enable
 filetype plugin indent on
