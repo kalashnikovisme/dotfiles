@@ -45,8 +45,8 @@ imap <F6> <Esc>:set nopaste<CR>
 map <F6> <Esc>:set nopaste<CR>
 imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-imap <F8> <Esc>:s#\%($\%(\k\+\)\)\@<=_\(\k\)#\u\1#g<CR>
-map <F8> <Esc>:s#\%($\%(\k\+\)\)\@<=_\(\k\)#\u\1#g<CR>
+imap <F8> <Esc>:set cursorcolumn!<CR>
+map <F8> <Esc>:set cursorcolumn!<CR>
 nmap <F9> :%!html2haml --erb 2> /dev/null<CR>:set ft=haml<CR>
 vmap <F9> :!html2haml --erb 2> /dev/null<CR>
 set relativenumber
