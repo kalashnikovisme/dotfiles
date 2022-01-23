@@ -74,4 +74,4 @@ au BufRead,BufNewFile Dockerfile* set syntax=dockerfile
 au BufRead,BufNewFile .eslintrc set syntax=json
 au BufRead,BufNewFile *.tsx set syntax=typescript
 autocmd FileType vue noremap <buffer> <C-f> :%!vue-formatter<CR>
-set :hlsearch
+set hlsearch
