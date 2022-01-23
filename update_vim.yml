@@ -1,9 +1,0 @@
----
-- hosts: all
-  tasks:
-    - file:
-        path: /home/$USER/.vim
-        state: directory
-    - copy: src={{ curdir }}/files/vimrc dest=/home/$USER/.vimrc
-    - command: "vim +BundleInstall +qall"
-    - command: "vim +PluginInstall +qall"

@@ -1,0 +1,44 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Vim and needed stuff
+      apt:
+        pkg:
+          - vim
+          - vim-nox
+          - vim-gtk
+          - vim-gtk3
+          - vim-athena
+    - git:
+        repo: https://github.com/ingydotnet/yaml-vim.git
+        dest: ~/vim_files
+    - file:
+        path: ~/.vim/syntax
+        state: directory
+    - copy:
+        src: ~/vim_files/syntax/yaml.vim
+        dest: ~/.vim/syntax/yaml.vim
+      tags: vim
+    - file:
+        path: ~/.vim/scripts
+        state: directory
+      tags: vim
+    - copy:
+        src: ~/vim_files/{{ item }}
+        dest: ~/.vim/scripts/{{ item }}
+      tags: vim
+      with_items:
+        - yamlsort.vim
+        - yamlsort.rb
+    - file:
+        path: ~/vim_files
+        state: absent
+    - file:
+        path: ~/.vim/plugin/
+        state: directory
+        force: yes
+    - file:
+        path: /home/$USER/.vim
+        state: directory
+    - copy: src={{ curdir }}/files/vimrc dest=/home/$USER/.vimrc
+    - command: "vim +PlugInstall +qall"
