@@ -5,25 +5,29 @@ set sts=2
 let g:fuzzy_ignore = "gems/*"
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplete.vim'
-Bundle "tpope/vim-rails.git"
-Bundle 'slim-template/vim-slim.git'
-Bundle 'isRuslan/vim-es6'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'mxw/vim-jsx'
-Bundle 'wakatime/vim-wakatime'
-Bundle 'sebdah/vim-delve'
-Bundle 'posva/vim-vue'
-Bundle 'maxmellon/vim-jsx-pretty'
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+Plug 'scrooloose/nerdtree'
+Plug 'kchmck/vim-coffee-script'
+Plug 'scrooloose/syntastic'
+Plug 'Shougo/neocomplete.vim'
+Plug 'tpope/vim-rails'
+Plug 'slim-template/vim-slim'
+Plug 'isRuslan/vim-es6'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'elixir-lang/vim-elixir'
+Plug 'leafgarland/typescript-vim'
+Plug 'mxw/vim-jsx'
+Plug 'wakatime/vim-wakatime'
+Plug 'sebdah/vim-delve'
+Plug 'posva/vim-vue'
+Plug 'maxmellon/vim-jsx-pretty'
+call plug#end()
 syntax enable
 filetype plugin indent on
 imap <F2> <Esc>:w<CR>
