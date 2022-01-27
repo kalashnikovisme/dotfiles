@@ -8,6 +8,13 @@ It's script to setup my own configuration for Ubuntu 20.04 (my current OS)
 
 It installs Ansible and use Ansible playbook to install other applications
 
+## Files
+
+* [vimrc](https://github.com/kalashnikovisme/dotfiles/blob/master/files/vimrc)
+* [gitconfig](https://github.com/kalashnikovisme/dotfiles/blob/master/files/.gitconfig)
+* [bashrc](https://github.com/kalashnikovisme/dotfiles/blob/master/files/bashrc)
+* [gitignore](https://github.com/kalashnikovisme/dotfiles/blob/master/files/gitignore)
+
 ## Actions
 
 ### Applications
