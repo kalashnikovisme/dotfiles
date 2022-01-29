@@ -30,6 +30,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-haml'
+Plug 'styled-components/vim-styled-components'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 syntax enable
 filetype plugin indent on
@@ -39,10 +44,8 @@ imap <F3> <Esc>:q!<CR>
 map <F3> <Esc>:q!<CR>
 imap <F4> <Esc>:wq<CR>
 map <F4> <Esc>:wq<CR>
-imap <F5> <Esc>:set paste<CR>
-map <F5> <Esc>:set paste<CR>
-imap <F6> <Esc>:set nopaste<CR>
-map <F6> <Esc>:set nopaste<CR>
+imap <F5> <Esc>:noh<CR>
+map <F5> <Esc>:noh<CR>
 imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 imap <F8> <Esc>:set cursorcolumn!<CR>
@@ -75,3 +78,6 @@ au BufRead,BufNewFile .eslintrc set syntax=json
 au BufRead,BufNewFile *.tsx set syntax=typescript
 autocmd FileType vue noremap <buffer> <C-f> :%!vue-formatter<CR>
 set hlsearch
+if has("autocmd")
+    autocmd FileType ruby set complete+=k/home/pavel/.vim/complete/custom.vim
+endif " has("autocmd")
