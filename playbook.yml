@@ -53,6 +53,7 @@
         - redis-server
         - cmake
         - ncdu
+        - mumble
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"

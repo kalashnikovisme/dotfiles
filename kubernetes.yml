@@ -1,0 +1,67 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Prepare to install kubectl
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+    - name: Download the Google Cloud public signing key
+      shell: curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    - name: Add the Kubernetes apt repository
+      shell: echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    - name: apt-get update
+      shell: apt-get update
+    - name: Install kubectl
+      apt:
+        pkg:
+          - kubectl
+    - name: Install k9s
+      shell: snap install k9s
+    - name: Install helm
+      shell: snap install helm --classic
+    # NOTE: All lines between 24 and EOF are from https://github.com/LukinEgor/dotfiles/blob/master/packages/tasks/main.yml#L212
+    - name: Install sops
+      vars:
+        sops_version: 3.6.1
+      shell: |
+        wget https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops-v{{ sops_version }}.linux
+        sudo chmod +x sops-v{{ sops_version }}.linux
+        sudo mv sops-v{{ sops_version }}.linux /usr/local/bin/sops
+    - name: Check kubecfg
+      command: which kubecfg
+      register: kubecfg
+      failed_when: kubecfg.rc != 1 and kubecfg.rc != 0
+
+
+    - name: Install kubecfg
+      vars:
+        kubecfg_version: 0.16.0
+      when: kubecfg.stdout == ""
+      shell: |
+        wget https://github.com/bitnami/kubecfg/releases/download/v{{ kubecfg_version }}/kubecfg-linux-amd64
+        sudo chmod +x kubecfg-linux-amd64
+        sudo mv kubecfg-linux-amd64 /usr/local/bin/kubecfg
+    - name: Check helmfile
+      command: which helmfile
+      register: helmfile
+      failed_when: helmfile.rc != 1 and helmfile.rc != 0
+
+
+    - name: Install helmfile
+      vars:
+        helmfile_version: 0.130.0
+      when: helmfile.stdout == ""
+      shell: |
+        wget https://github.com/roboll/helmfile/releases/download/v{{ helmfile_version }}/helmfile_linux_amd64
+        sudo chmod +x helmfile_linux_amd64
+        sudo mv helmfile_linux_amd64 /usr/local/bin/helmfile
+    - name: Check helm_diff
+      command: helm plugin list | grep diff
+      register: helm_diff
+      failed_when: helm_diff.rc != 1 and helm_diff.rc != 0
+
+    - name: Install helm_diff
+      when: helm_diff.stdout == ""
+      shell: |
+        helm plugin install https://github.com/databus23/helm-diff
