@@ -96,7 +96,3 @@
     - copy:
         src: "{{ curdir }}/files/gitignore"
         dest: "~/.gitignore"
-    - name: Install pyenv
-      git:
-        repo: https://github.com/pyenv/pyenv
-        dest: ~/.pyenv

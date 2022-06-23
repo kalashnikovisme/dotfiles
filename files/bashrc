@@ -116,6 +116,8 @@ PROMPT_COMMAND='echo -ne "\033]0;$(dirs)\007"'
 replace() {
   find . -type f -exec sed -i "s/$1/$2/g" {} +
 }
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then

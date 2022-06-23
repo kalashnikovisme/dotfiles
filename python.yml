@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Install pyenv
+      git:
+        repo: https://github.com/pyenv/pyenv
+        dest: ~/.pyenv
+    - name: Verify pyenv installation
+      command: pyenv install --list
