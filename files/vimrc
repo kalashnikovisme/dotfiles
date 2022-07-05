@@ -44,7 +44,7 @@ imap <F3> <Esc>:q!<CR>
 map <F3> <Esc>:q!<CR>
 imap <F4> <Esc>:wq<CR>
 map <F4> <Esc>:wq<CR>
-imap <F5> <Esc>:noh<CR>
+imap <silent> <F5> <Esc>:noh<CR>
 map <F5> <Esc>:noh<CR>
 imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
