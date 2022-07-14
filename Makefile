@@ -21,3 +21,4 @@ update_aliases:
 	ansible-playbook tasks/alias.yml -i local -vv
 update_bash:
 	cp -f ./files/bashrc ~/.bashrc
+	make update_aliases
