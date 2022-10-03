@@ -71,6 +71,7 @@ au BufRead,BufNewFile *.simplecov set syntax=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.vue set filetype=javascript
 au BufRead,BufNewFile *.vue set syntax=javascript
+au BufRead,BufNewFile *.babelrc set syntax=javascript
 au BufRead,BufNewFile *.go set tabstop=2
 au BufRead,BufNewFile Makefile set tabstop=2
 au BufRead,BufNewFile Dockerfile* set syntax=dockerfile
