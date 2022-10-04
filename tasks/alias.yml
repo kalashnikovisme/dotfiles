@@ -22,7 +22,6 @@
         - alias gups='git push --set-upstream origin'
         - alias glt='git describe --abbrev=0 --tags'
         - alias gplr='git pull --rebase'
-        - alias pg='rm -rf *.gem && gem build $(basename "$PWD").gemspec && gem push *.gem'
         - alias pga='for D in *; do [ -d "${D}" ] && cd "${D}" && (pg || true) && cd ..;  done'
         - alias fuck='sudo !!'
         - alias opengem='_() { cd $(rvm gemdir)/gems/$(gem list | grep -o "$1 (\([0-9]\.*\)*" | sed "s/ (/-/"); }; _'
