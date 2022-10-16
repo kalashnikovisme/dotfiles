@@ -1,6 +1,6 @@
 # [@kalashnikovisme](github.com/kalashnikovisme) environment installation
 
-Just run `./main.sh`
+Just run `sudo apt-get install unzip && wget https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/master.zip && unzip master.zip -d dotfiles && cd dotfiles/dotfiles-master && ./main.sh`
 
 ## What is it?
 
