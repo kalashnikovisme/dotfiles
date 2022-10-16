@@ -68,7 +68,7 @@
     - command: git config --global core.editor "vim"
     - copy:
         src: "{{ curdir }}/files/pg_hba.conf"
-        dest: /etc/postgresql/12/main/pg_hba.conf
+        dest: /etc/postgresql/14/main/pg_hba.conf
       become: true
     - apt:
         pkg:
