@@ -10,8 +10,8 @@ install_environment:
 	sudo ansible-playbook kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook python.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
-	sudo apt-get install -y software-properties-common
-	sudo apt-get install ansible
+	sudo apt install -y software-properties-common
+	sudo apt install ansible
 	ansible-galaxy collection install community.general
 update_vim:
 	ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
