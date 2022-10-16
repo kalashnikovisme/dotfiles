@@ -9,4 +9,4 @@
       shell: sudo apt update
       apt:
         pkg:
-          - yarn
+        - yarn
