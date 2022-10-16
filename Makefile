@@ -8,7 +8,6 @@ install_environment:
 	sudo ansible-playbook audacity.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook obs.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook kubernetes.yml -i local -vv -e curdir=$(CURDIR)
-	sudo ansible-playbook python.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install ansible
