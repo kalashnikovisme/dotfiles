@@ -4,4 +4,4 @@
     - name: Install audacity
       community.general.snap:
         name:
-          -audacity
+          - audacity
