@@ -35,7 +35,6 @@
         - bison 
         - libffi-dev 
         - liblzma-dev 
-        - python-openssl
         - libsqlite3-0 
         - libmysqlclient-dev 
         - aptitude
