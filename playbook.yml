@@ -56,7 +56,6 @@
       become: yes
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
-    - command: gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
     - shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
     - command: "touch /home/pavel/.gemrc"
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
