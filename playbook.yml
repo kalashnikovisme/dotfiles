@@ -41,7 +41,6 @@
         - openvpn
         - vlc
         - postgresql
-        - unetbootin
         - gparted
         - arduino
         - arduino-core
