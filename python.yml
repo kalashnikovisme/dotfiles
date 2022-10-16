@@ -4,6 +4,7 @@
     - name: Install pyenv
       git:
         repo: https://github.com/pyenv/pyenv
-        dest: ~/.pyenv
+        dest: /home/$USER/.pyenv
+        version: master
     - name: Verify pyenv installation
       command: pyenv install --list
