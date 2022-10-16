@@ -11,8 +11,6 @@ install_environment:
 	sudo ansible-playbook python.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt-get install -y software-properties-common
-	sudo apt-add-repository -y ppa:ansible/ansible
-	sudo apt-get update
 	sudo apt-get install ansible
 	ansible-galaxy collection install community.general
 update_vim:
