@@ -65,3 +65,8 @@
       when: helm_diff.stdout == ""
       shell: |
         helm plugin install https://github.com/databus23/helm-diff
+
+    - name: Install doctl
+      community.general.snap:
+        name:
+          - doctl
