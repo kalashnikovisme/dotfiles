@@ -83,4 +83,3 @@ set hlsearch
 if has("autocmd")
     autocmd FileType ruby set complete+=k/home/pavel/.vim/complete/custom.vim
 endif " has("autocmd")
-set foldmethod=indent
