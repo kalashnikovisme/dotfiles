@@ -1,5 +1,4 @@
 - hosts: all
-  become_user: root
   tasks:
     - name: Prepare to install kubectl
       apt:
@@ -73,3 +72,8 @@
 
     - name: Configure doctl
       command: snap connect doctl:kube-config
+
+    - name: Fix doctl
+      file:
+        path: "~/.kube"
+        state: directory
