@@ -70,3 +70,6 @@
       community.general.snap:
         name:
           - doctl
+
+    - name: Configure doctl
+      command: snap connect doctl:kube-config

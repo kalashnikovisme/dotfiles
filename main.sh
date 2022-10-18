@@ -9,7 +9,7 @@ make install_ansible
 echo 'Set needed permissions for ansible'
 sudo chown -R $USER ~/.ansible/
 echo 'Install environment'
-make install_environment && make update_vim && make update_aliases
+make install_environment && make update_vim && make update_bash
 
 echo 'Add current user to docker group'
 sudo usermod -a -G docker $USER
