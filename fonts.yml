@@ -1,0 +1,41 @@
+---
+- hosts: all
+  vars_files:
+    - variables.yml
+  tasks:
+    - name: Download MartianMono
+      get_url:
+        url: "https://github.com/evilmartians/mono/releases/download/v0.9.2/martian-mono-{{ martian_mono_version }}-ttf.zip"
+        dest: "./"
+
+    - name: Unzip files
+      command: "unzip martian-mono-{{ martian_mono_version }}-ttf.zip"
+
+    - name: Install font
+      copy:
+        src: "MartianMono-sWdxLt.ttf"
+        dest: "~/.local/share/fonts/"
+
+    - name: Use font in the Terminal
+      command: dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font  "'MartianMono sWd xLt 12'"
+
+    - name: Remove all temp files
+      find:
+        paths: "./"
+        patterns: "MartianMono"
+        use_regex: true
+      register: martian_mono_files
+
+    - file:
+        state: absent
+        path: "{{ item }}"
+      loop: "{{ martian_mono_files.files|map(attribute='path')|list }}"
+
+    - file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "./martian-mono-{{ martian_mono_version }}-ttf.zip"
+        - "Changelog.md"
+        - "__MACOSX"
+        - "README.txt"
