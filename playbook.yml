@@ -1,16 +1,12 @@
 ---
 - hosts: all
-  vars:
-    name: "Pavel Kalashnikov"
-    email: "kalashnikovisme@gmail.com"
   tasks: 
-    - name: Install first batch of needed packages
+    - name: Install needed packages
       apt:
         pkg:
         - xclip
         - htop 
         - graphviz 
-        - git 
         - curl 
         - build-essential 
         - openssl 
@@ -54,17 +50,10 @@
         - ncdu
         - mumble
       become: yes
-    - command: git config --global user.email "{{ email }}"
-    - command: git config --global user.name "{{ name }}"
     - shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
     - command: "touch /home/pavel/.gemrc"
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
-    - command: 'git config --global core.excludesfile ~/.gitignore'
-    - apt:
-        pkg:
-          - git-flow
       become: true
-    - command: git config --global core.editor "vim"
     - copy:
         src: "{{ curdir }}/files/pg_hba.conf"
         dest: /etc/postgresql/14/main/pg_hba.conf
@@ -91,6 +80,3 @@
         src: "{{ curdir }}/files/bashrc"
         dest: "~/.bashrc"
     - command: "/bin/bash -lic 'source ~/.bashrc'"
-    - copy:
-        src: "{{ curdir }}/files/gitignore"
-        dest: "~/.gitignore"
