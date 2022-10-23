@@ -1,6 +1,7 @@
 install_environment:
 	sudo ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	sudo ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
+	ansible-playbook git.yml -i local -vv
 	ansible-playbook playbook.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook snap.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook install-docker.yml -i local -vv -e curdir=$(CURDIR)
