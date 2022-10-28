@@ -14,7 +14,9 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'kchmck/vim-coffee-script'
 Plug 'scrooloose/syntastic'
-Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'tpope/vim-rails'
 Plug 'slim-template/vim-slim'
 Plug 'isRuslan/vim-es6'
@@ -84,3 +86,4 @@ set hlsearch
 if has("autocmd")
     autocmd FileType ruby set complete+=k/home/pavel/.vim/complete/custom.vim
 endif " has("autocmd")
+let g:deoplete#enable_at_startup = 1
