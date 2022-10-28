@@ -42,3 +42,9 @@
         state: directory
     - copy: src={{ curdir }}/files/vimrc dest=/home/$USER/.vimrc
     - command: "vim +PlugClean +PlugInstall +qall"
+    - name: Install deoplete
+      apt:
+        pkg:
+          - python3-pip
+    - pip:
+        name: pynvim
