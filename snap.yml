@@ -4,6 +4,7 @@
     - community.general.snap:
         name:
           - rocketchat-desktop
-    - community.general.snap:
-        name:
           - postman
+    - community.general.snap:
+        name: glab
+        channel: latest/edge
