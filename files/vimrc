@@ -1,5 +1,6 @@
 set nu
 set expandtab
+set relativenumber
 set sw=2
 set sts=2
 let g:fuzzy_ignore = "gems/*"
@@ -37,6 +38,7 @@ Plug 'tpope/vim-haml'
 Plug 'styled-components/vim-styled-components'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 call plug#end()
 syntax enable
 filetype plugin indent on
@@ -52,16 +54,8 @@ imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 imap <F8> <Esc>:set cursorcolumn!<CR>
 map <F8> <Esc>:set cursorcolumn!<CR>
-nmap <F9> :%!html2haml --erb 2> /dev/null<CR>:set ft=haml<CR>
-vmap <F9> :!html2haml --erb 2> /dev/null<CR>
-set relativenumber
-"allow to copy/paste between VIM instances
-" "copy the current visual selection to ~/.vbuf
-vmap <F10>y :w! ~/.vbuf<CR>
-" "copy the current line to the buffer file if no visual selection
-nmap <F10>y :.w! ~/.vbuf<CR>
-" "paste the contents of the buffer file
-nmap <F10>p :r ~/.vbuf<CR>
+nmap <F9> <Esc>:CarbonNowSh<CR>:CarbonNowSh<CR>
+vmap <F9> <Esc>:CarbonNowSh<CR>:CarbonNowSh<CR>
 map <C-p> :NERDTreeToggle<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
