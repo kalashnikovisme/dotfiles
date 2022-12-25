@@ -5,7 +5,7 @@
     email: "kalashnikovisme@gmail.com"
   tasks: 
     - name: Install git
-      command: apt-get install git-core
+      command: sudo apt-get install git-core
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
