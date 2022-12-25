@@ -7,7 +7,7 @@
     - name: Install git
       apt:
         pkg:
-          - git
+          - git-core
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
