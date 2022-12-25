@@ -6,7 +6,7 @@
       become: yes
     - shell: curl -sSL https://get.rvm.io | bash
     - command: "touch /home/pavel/.gemrc"
-    - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
+    - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="/home/pavel/.gemrc"'
       become: true
     - copy:
         src: "{{ curdir }}/files/pg_hba.conf"
