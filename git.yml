@@ -18,6 +18,11 @@
     - command: git config --global core.excludesfile ~/.gitignore
     - command: git config --global core.editor "vim"
     - command: git config --global init.defaultBranch "main"
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock-frontend"
+      become: true
     - name: Install git-flow
       apt:
         pkg:
