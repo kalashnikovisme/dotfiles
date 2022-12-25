@@ -13,7 +13,7 @@ install_environment:
 	sudo ansible-playbook fonts.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt install -y software-properties-common
-	sudo apt install ansible
+	sudo apt install -y ansible
 	ansible-galaxy collection install community.general
 update_vim:
 	ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
