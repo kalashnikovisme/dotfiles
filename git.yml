@@ -12,7 +12,7 @@
     - command: git config --global core.editor "vim"
     - command: git config --global init.defaultBranch "main"
     - name: Install git-flow
-      command: apt-get install git-flow
+      command: apt-get -y install git-flow
     - copy:
         src: "./files/gitignore"
         dest: "~/.gitignore"

@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
     - name: Install Vim and needed stuff
-      command: apt install vim vim-nox vim-gtk vim-gtk3 vim-athena
+      command: apt install -y vim vim-nox vim-gtk vim-gtk3 vim-athena
     - git:
         repo: https://github.com/ingydotnet/yaml-vim.git
         dest: ~/vim_files

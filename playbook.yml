@@ -2,7 +2,7 @@
 - hosts: all
   tasks: 
     - name: Install needed packages
-      command: apt install xclip htop graphviz curl build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libreadline-dev libsqlite3-dev libxslt1-dev libgdbm-dev libncurses5-dev libncursesw5-dev libbz2-dev libsqlite3-dev llvm xz-utils tk-dev automake libtool bison libffi-dev liblzma-dev libsqlite3-0 libmysqlclient-dev aptitude openvpn vlc postgresql gparted arduino arduino-core ffmpeg docker.io net-tools libpq-dev ruby-dev redis-server cmake ncdu mumble
+      command: apt install -y xclip htop graphviz curl build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libreadline-dev libsqlite3-dev libxslt1-dev libgdbm-dev libncurses5-dev libncursesw5-dev libbz2-dev libsqlite3-dev llvm xz-utils tk-dev automake libtool bison libffi-dev liblzma-dev libsqlite3-0 libmysqlclient-dev aptitude openvpn vlc postgresql gparted arduino arduino-core ffmpeg docker.io net-tools libpq-dev ruby-dev redis-server cmake ncdu mumble
       become: yes
     - shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
     - command: "touch /home/pavel/.gemrc"
@@ -12,17 +12,17 @@
         src: "{{ curdir }}/files/pg_hba.conf"
         dest: /etc/postgresql/14/main/pg_hba.conf
       become: true
-    - command: apt install libpq-dev libmagickwand-dev nodejs
+    - command: apt install -y libpq-dev libmagickwand-dev nodejs
       become: true
     - command: "dpkg --add-architecture i386"
       become: true
     - command: sudo apt-get -f install
-    - command: apt install gimp gnome-tweaks
+    - command: apt install -y gimp gnome-tweaks
       become: true
     - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
     - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
-    - shell: "sudo apt-get update"
-    - shell: "sudo apt-get install google-chrome-stable"
+    - shell: "sudo apt-get -y update"
+    - shell: "sudo apt-get install -y google-chrome-stable"
     - copy:
         src: "{{ curdir }}/files/bashrc"
         dest: "~/.bashrc"
