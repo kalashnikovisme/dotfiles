@@ -3,9 +3,16 @@
   vars:
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
-  tasks: 
+  tasks:
+    - name: Remove apt lock file
+      file:
+        state: absent
+        path: "/var/lib/dpkg/lock-frontend"
+      become: true
     - name: Install git
-      command: sudo apt-get install git-core
+      apt:
+        pkg:
+          - git
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
