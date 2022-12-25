@@ -4,7 +4,7 @@
     - name: Install needed packages
       command: apt install -y xclip htop graphviz curl build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libreadline-dev libsqlite3-dev libxslt1-dev libgdbm-dev libncurses5-dev libncursesw5-dev libbz2-dev libsqlite3-dev llvm xz-utils tk-dev automake libtool bison libffi-dev liblzma-dev libsqlite3-0 libmysqlclient-dev aptitude openvpn vlc postgresql gparted arduino arduino-core ffmpeg docker.io net-tools libpq-dev ruby-dev redis-server cmake ncdu mumble
       become: yes
-    - shell: \curl -L https://get.rvm.io | bash -s stable --autolibs=3 creates=~/.rvm
+    - shell: curl -sSL https://get.rvm.io | bash
     - command: "touch /home/pavel/.gemrc"
     - lineinfile: 'line="gem: --no-ri --no-rdoc" dest="~/.gemrc"'
       become: true
