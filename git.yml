@@ -1,4 +1,5 @@
 - hosts: all
+  become_user: root
   vars:
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
