@@ -1,10 +1,7 @@
 - hosts: all
   tasks:
     - name: Prepare to install kubectl
-      apt:
-        pkg:
-          - apt-transport-https
-          - ca-certificates
+      command: apt install apt-transport-https ca-certificates
     - name: Download the Google Cloud public signing key
       shell: curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
     - name: Add the Kubernetes apt repository
@@ -12,9 +9,7 @@
     - name: apt-get update
       shell: apt-get update
     - name: Install kubectl
-      apt:
-        pkg:
-          - kubectl
+      command: apt install kubectl
     - name: Install k9s
       shell: snap install k9s
     - name: Install helm

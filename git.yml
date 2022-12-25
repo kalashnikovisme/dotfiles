@@ -4,29 +4,15 @@
     name: "Pavel Kalashnikov"
     email: "kalashnikovisme@gmail.com"
   tasks:
-    - name: Remove apt lock file
-      file:
-        state: absent
-        path: "/var/lib/dpkg/lock-frontend"
-      become: true
     - name: Install git
-      apt:
-        pkg:
-          - git
+      command: apt-get install git-core
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
     - command: git config --global core.editor "vim"
     - command: git config --global init.defaultBranch "main"
-    - name: Remove apt lock file
-      file:
-        state: absent
-        path: "/var/lib/dpkg/lock-frontend"
-      become: true
     - name: Install git-flow
-      apt:
-        pkg:
-          - git-flow
+      command: apt-get install git-flow
     - copy:
         src: "./files/gitignore"
         dest: "~/.gitignore"

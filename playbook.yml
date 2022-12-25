@@ -2,23 +2,7 @@
 - hosts: all
   tasks: 
     - name: Install needed packages
-      apt:
-        pkg:
-        - xclip
-        - htop 
-        - graphviz 
-        - curl 
-        - build-essential 
-        - openssl 
-        - libreadline6-dev
-        - zlib1g 
-        - zlib1g-dev 
-        - libssl-dev 
-        - libyaml-dev 
-        - libreadline-dev 
-        - libsqlite3-dev 
-        - libxslt1-dev 
-        - libgdbm-dev 
+      command: xclip htop raphviz curl build-essential openssl libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libreadline-dev libsqlite3-dev libxslt1-dev libgdbm-dev 
         - libncurses5-dev 
         - libncursesw5-dev 
         - libbz2-dev
@@ -58,19 +42,12 @@
         src: "{{ curdir }}/files/pg_hba.conf"
         dest: /etc/postgresql/14/main/pg_hba.conf
       become: true
-    - apt:
-        pkg:
-          - libpq-dev
-          - libmagickwand-dev
-          - nodejs
+    - command: apt install libpq-dev libmagickwand-dev nodejs
       become: true
     - command: "dpkg --add-architecture i386"
       become: true
     - command: sudo apt-get -f install
-    - apt:
-        pkg:
-          - gimp
-          - gnome-tweaks
+    - command: apt install gimp gnome-tweaks
       become: true
     - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
     - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"

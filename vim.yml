@@ -2,13 +2,7 @@
 - hosts: all
   tasks:
     - name: Install Vim and needed stuff
-      apt:
-        pkg:
-          - vim
-          - vim-nox
-          - vim-gtk
-          - vim-gtk3
-          - vim-athena
+      command: apt install vim vim-nox vim-gtk vim-gtk3 vim-athena
     - git:
         repo: https://github.com/ingydotnet/yaml-vim.git
         dest: ~/vim_files
@@ -42,9 +36,7 @@
         state: directory
     - copy: src={{ curdir }}/files/vimrc dest=/home/$USER/.vimrc
     - name: Install deoplete
-      apt:
-        pkg:
-          - python3-pip
+      command: python3-pip
     - pip:
         name:
           - pynvim
