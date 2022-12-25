@@ -1,7 +1,7 @@
 echo 'Upgrade apt'
 sudo apt-get -y upgrade
 echo 'apt-get update'
-sudo apt-get update
+sudo apt-get -y update
 echo 'Install make'
 sudo apt-get install make
 echo 'Install ansible'
