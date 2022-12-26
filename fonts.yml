@@ -9,7 +9,7 @@
         dest: "./"
 
     - name: Unzip files
-      command: "unzip martian-mono-{{ martian_mono_version }}-ttf.zip"
+      command: "unzip -o martian-mono-{{ martian_mono_version }}-ttf.zip"
 
     - name: Install font
       copy:
