@@ -16,7 +16,7 @@ install_ansible:
 	sudo apt install -y ansible
 	ansible-galaxy collection install community.general
 update_vim:
-	ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
+	sudo ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
 update_bash:
 	cp -f ./files/bashrc ~/.bashrc
 	ansible-playbook tasks/alias.yml -i local -vv
