@@ -9,7 +9,7 @@
         dest: "./"
 
     - name: Unzip files
-      command: "unzip martian-mono-{{ martian_mono_version }}-ttf.zip"
+      command: "unzip -o martian-mono-{{ martian_mono_version }}-ttf.zip"
 
     - name: Install font
       copy:
@@ -17,7 +17,7 @@
         dest: "~/.local/share/fonts/"
 
     - name: Use font in the Terminal
-      command: dconf write /org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default)/font  "'MartianMono sWd xLt 12'"
+      command: dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font  "'MartianMono sWd xLt 12'"
 
     - name: Remove all temp files
       find:

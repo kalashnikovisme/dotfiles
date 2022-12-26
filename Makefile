@@ -10,13 +10,13 @@ install_environment:
 	sudo ansible-playbook obs.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook slack.yml -i local -vv -e curdir=$(CURDIR)
-	sudo ansible-playbook fonts.yml -i local -vv -e curdir=$(CURDIR)
+	ansible-playbook fonts.yml -i local -vv -e curdir=$(CURDIR)
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
 	ansible-galaxy collection install community.general
 update_vim:
-	ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
+	sudo ansible-playbook vim.yml -i local -vv -e curdir=$(CURDIR)
 update_bash:
 	cp -f ./files/bashrc ~/.bashrc
 	ansible-playbook tasks/alias.yml -i local -vv
