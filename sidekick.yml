@@ -1,0 +1,11 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Download sidekick deb file
+      command: wget -o sidekick.deb https://api.meetsidekick.com/downloads/df/linux/deb
+
+    - name: Depackage sidekick deb
+      command: dpkg -i sidekick.deb
+
+    - name: Install sidekick browser
+      command: apt install -yf
