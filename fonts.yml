@@ -5,7 +5,7 @@
   tasks:
     - name: Download MartianMono
       get_url:
-        url: "https://github.com/evilmartians/mono/releases/download/v0.9.2/martian-mono-{{ martian_mono_version }}-ttf.zip"
+        url: "https://github.com/evilmartians/mono/releases/download/v{{ martian_mono_version }}/martian-mono-{{ martian_mono_version }}-ttf.zip"
         dest: "./"
 
     - name: Unzip files
