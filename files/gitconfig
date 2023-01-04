@@ -1,0 +1,19 @@
+[core]
+  editor = vim
+  excludesfile = /home/pavel/.gitignore
+  whitespace = -indent-with-non-tab,trailing-space,cr-at-eol
+  quotepath = false
+  autocrlf = input
+[user]
+  email = kalashnikovisme@gmail.com
+  name = Pavel Kalashnikov
+[apply]
+  whitespace = nowarn
+[merge]
+  summary = true
+  conflictstyle = diff3
+[push]
+  default = current
+[diff]
+  indentHeuristic = true
+  compactionHeuristic = true
