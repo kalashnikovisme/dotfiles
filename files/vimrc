@@ -81,3 +81,6 @@ if has("autocmd")
     autocmd FileType ruby set complete+=k/home/pavel/.vim/complete/custom.vim
 endif " has("autocmd")
 let g:deoplete#enable_at_startup = 1
+
+# GoLang configuration
+autocmd FileType go set noexpandtab
