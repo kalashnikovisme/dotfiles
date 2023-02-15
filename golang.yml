@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: Install gvm
+      shell: bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
