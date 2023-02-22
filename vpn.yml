@@ -6,3 +6,9 @@
 
     - name: Install Private Internet Access
       command: sh download_installer_linux_beta
+
+    - name: Download Outline
+      command: wget https://s3.amazonaws.com/outline-releases/client/Outline-Client.AppImage
+
+    - name: Install Outline
+      command: chmod +x Outline-Client.AppImage && ./Outline-Client.AppImage
