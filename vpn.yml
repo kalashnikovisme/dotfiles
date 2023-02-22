@@ -1,0 +1,8 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Download Private Internet Access installer
+      command: wget https://www.privateinternetaccess.com/installer/x/download_installer_linux
+
+    - name: Install Private Internet Access
+      command: sh download_installer_linux_beta
