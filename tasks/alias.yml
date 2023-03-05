@@ -25,6 +25,5 @@
         - alias pga='for D in *; do [ -d "${D}" ] && cd "${D}" && (pg || true) && cd ..;  done'
         - alias fuck='sudo !!'
         - alias opengem='_() { cd $(rvm gemdir)/gems/$(gem list | grep -o "$1 (\([0-9]\.*\)*" | sed "s/ (/-/"); }; _'
-        - alias dp="gp && gco master && gp && gpt && gco develop && make deploy_production"
         - alias dm="gp && gco main && gp && gpt && gco develop"
         - alias gce='git commit --allow-empty -m "Empty commit"'
