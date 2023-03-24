@@ -12,7 +12,7 @@ install_environment:
 	sudo ansible-playbook kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook slack.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook fonts.yml -i local -vv -e curdir=$(CURDIR)
-	sudo ansible-playbook vpn.yml -i local -vv -e curdir=$(CURDIR)
+	sudo ansible-playbook vpn.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
