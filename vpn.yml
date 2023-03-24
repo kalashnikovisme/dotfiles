@@ -1,14 +1,20 @@
 - hosts: all
-  become_user: root
   tasks:
-    - name: Download Private Internet Access installer
-      command: wget https://www.privateinternetaccess.com/installer/x/download_installer_linux
+    - name: "Private Internet Access: Download"
+      get_url:
+        url: https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run
+        dest: ./download_installer_linux.sh
 
-    - name: Install Private Internet Access
-      command: sh download_installer_linux_beta
+    - name: "Private Internet Access: Install"
+      command: ./download_installer_linux.sh
 
-    - name: Download Outline
-      command: wget https://s3.amazonaws.com/outline-releases/client/Outline-Client.AppImage
+    - name: "Outline: Download"
+      get_url: 
+        url: https://s3.amazonaws.com/outline-releases/client/Outline-Client.AppImage
+        dest: ./Outline-Client.AppImage
 
-    - name: Install Outline
-      command: chmod +x Outline-Client.AppImage && ./Outline-Client.AppImage
+    - name: "Outline: Make installation file executable"
+      command: chmod +x ./Outline-Client.AppImage
+        
+    - name: "Outline: Run installation"
+      command: ./Outline-Client.AppImage &
