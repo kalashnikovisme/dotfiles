@@ -6,7 +6,7 @@
         name: docker
         state: present
     - name: Install docker-compose
-      shell: \curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      shell: \curl -L "https://github.com/docker/compose/releases/download/latest/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     - name: Add execute permissions
       file:
         path: /usr/local/bin/docker-compose
