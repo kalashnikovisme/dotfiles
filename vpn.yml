@@ -5,8 +5,8 @@
         url: https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run
         dest: ./download_installer_linux.sh
 
-    # - name: "Private Internet Access: Install"
-    #   command: ./download_installer_linux.sh
+    - name: "Private Internet Access: Install"
+      command: ./download_installer_linux.sh
 
     - name: "Outline: Download"
       get_url: 
