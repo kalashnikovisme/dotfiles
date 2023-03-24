@@ -14,6 +14,7 @@ install_environment:
 	ansible-playbook fonts.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook appimages.yml -i local -vv
 	ansible-playbook vpn.yml -i local -vv
+	ansible-playbook ruby.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
