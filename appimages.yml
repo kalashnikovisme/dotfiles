@@ -1,0 +1,7 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: "FUSE2: Install"
+      apt:
+        pkg:
+          - libfuse2
