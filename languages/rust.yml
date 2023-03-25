@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+    - name: "Rust: download rustup"
+      command: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o ./rust_install.sh
+
+    - name: "Rust: install rustup"
+      command: sh ./rust_install.sh -y

@@ -2,3 +2,4 @@
 download_installer_linux.sh
 Outline-Client.AppImage
 rvm_install.bash
+rust_install.sh

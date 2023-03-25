@@ -48,6 +48,8 @@ It installs Ansible and use Ansible playbook to install other applications
 21. Rocket.Chat Desktop
 22. pyenv
 23. cmake
+24. Rust
+25. Telegram
 
 ### Configurations
 
