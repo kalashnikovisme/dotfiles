@@ -16,7 +16,7 @@ install_environment:
 	ansible-playbook sec/vpn.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
 	ansible-playbook communication/telegram.yml -i local -vv
-	ansible-playbook languages/rust.yml -i local -vv
+	sudo ansible-playbook languages/rust.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible

@@ -1,5 +1,11 @@
 - hosts: all
   tasks:
+    - name: "Rust: install clang"
+      become: true
+      apt:
+        pkg:
+          - clang
+
     - name: "Rust: download rustup"
       command: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o ./rust_install.sh
 
