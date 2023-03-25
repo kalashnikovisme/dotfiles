@@ -1,7 +1,7 @@
 ---
 - hosts: all
-  vars_files:
-    - variables.yml
+  variables:
+    martian_mono_version: "1.0.0"
   tasks:
     - name: Download MartianMono
       get_url:
