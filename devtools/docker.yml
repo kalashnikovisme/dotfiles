@@ -1,12 +1,14 @@
 - hosts: all
+  vars:
+    docker_compose_version: "1.29.2"
   become_user: root
   tasks: 
     - name: Post-install docker actions. Create docker group
       group:
         name: docker
         state: present
-    - name: Install docker-compose
-      shell: \curl -L "https://github.com/docker/compose/releases/download/latest/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    - name: "Install docker-compose version: {{ docker_compose_version }}"
+      command: curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
     - name: Add execute permissions
       file:
         path: /usr/local/bin/docker-compose
