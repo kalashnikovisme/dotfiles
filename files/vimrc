@@ -64,6 +64,7 @@ nmap <silent> <C-l> :wincmd l<CR>
 let g:neocomplete#enable_at_startup = 2
 au BufRead,BufNewFile *.thor set syntax=ruby
 au BufRead,BufNewFile *.simplecov set syntax=ruby
+au BufRead,BufNewFile *.gemfile set syntax=ruby
 au BufRead,BufNewFile *.es6 set filetype=javascript
 au BufRead,BufNewFile *.vue set filetype=javascript
 au BufRead,BufNewFile *.vue set syntax=javascript
@@ -81,6 +82,4 @@ if has("autocmd")
     autocmd FileType ruby set complete+=k/home/pavel/.vim/complete/custom.vim
 endif " has("autocmd")
 let g:deoplete#enable_at_startup = 1
-
-# GoLang configuration
 autocmd FileType go set noexpandtab
