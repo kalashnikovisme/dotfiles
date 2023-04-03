@@ -17,6 +17,7 @@ install_environment:
 	ansible-playbook languages/ruby.yml -i local -vv
 	ansible-playbook communication/telegram.yml -i local -vv
 	sudo ansible-playbook languages/rust.yml -i local -vv
+	sudo ansible-playbook devtools/heroku.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible

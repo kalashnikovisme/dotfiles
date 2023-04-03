@@ -1,0 +1,8 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Install heroku
+      community.general.snap:
+        classic: true
+        name:
+          - heroku 
