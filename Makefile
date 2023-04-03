@@ -18,6 +18,8 @@ install_environment:
 	ansible-playbook communication/telegram.yml -i local -vv
 	sudo ansible-playbook languages/rust.yml -i local -vv
 	sudo ansible-playbook devtools/heroku.yml -i local -vv
+	sudo ansible-playbook package_managers/app_image_launcher.yml -i local -vv
+	sudo ansible-playbook devtools/httpie.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
