@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  variables:
+  vars:
     martian_mono_version: "1.0.0"
   tasks:
     - name: Download MartianMono

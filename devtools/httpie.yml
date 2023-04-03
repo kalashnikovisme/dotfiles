@@ -1,0 +1,11 @@
+- hosts: all
+  vars:
+    version: 2023.1.2
+  tasks:
+    - name: Download HTTPie
+      become_user: true
+      get_url:
+        url: https://github.com/httpie/desktop/releases/download/v{{ version }}/HTTPie-{{ version }}.AppImage
+        dest: ./HTTPie.AppImage
+    - name: Install HTTPie
+      command: AppImageLauncher HTTPie.AppImage
