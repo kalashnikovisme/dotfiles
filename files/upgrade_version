@@ -1,0 +1,49 @@
+#!/bin/bash
+
+# Example input semantic versioning string
+semver=$(glt)
+
+# Split the string into its major, minor, and patch versions
+major=$(echo $semver | cut -d"." -f1)
+minor=$(echo $semver | cut -d"." -f2)
+patch=$(echo $semver | cut -d"." -f3)
+fix=$(echo $semver | cut -d"." -f4)
+
+# Determine the level of upgrade (major, minor, or patch)
+# Here, we're upgrading the minor version by default, unless specified otherwise
+upgrade_level="major"
+if [[ "$2" == "minor" ]]; then
+  upgrade_level="minor"
+elif [[ "$2" == "patch" ]]; then
+  upgrade_level="patch"
+elif [[ "$2" == "fix" ]]; then
+  upgrade_level="fix"
+fi
+
+# Upgrade the version number
+if [[ "$upgrade_level" == "major" ]]; then
+  major=$((major+1))
+  minor=0
+  patch=0
+  fix=0
+elif [[ "$upgrade_level" == "minor" ]]; then
+  minor=$((minor+1))
+  patch=0
+  fix=0
+elif [[ "$upgrade_level" == "patch" ]]; then
+  patch=$((patch+1))
+  fix=0
+else
+  fix=$((fix+1))
+fi
+
+# Construct the new version number string
+new_semver="$major.$minor"
+if [[ "$patch" != "0" ]]; then
+  new_semver="$new_semver.$patch"
+fi
+if [[ "$fix" != "0" ]]; then
+  new_semver="$new_semver.$fix"
+fi
+
+git release start $new_semver

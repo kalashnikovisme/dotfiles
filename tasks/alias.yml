@@ -17,7 +17,7 @@
         - alias gff='git flow feature finish'
         - alias ghs='git flow hotfix start'
         - alias ghf='git flow hotfix finish'
-        - alias grs='git flow release start'
+        - alias grs='~/upgrade_version'
         - alias grf='git flow release finish'
         - alias gups='git push --set-upstream origin'
         - alias glt='git describe --abbrev=0 --tags'
