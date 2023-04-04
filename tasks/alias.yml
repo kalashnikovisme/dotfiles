@@ -1,7 +1,14 @@
 ---
 - hosts: all
   tasks:
-    - lineinfile: dest=~/.bashrc state=present line={{ item }}
+    - name: Copy upgrade_version script
+      copy:
+        src: ../files/upgrade_version
+        dest: /home/$USER/upgrade_version
+    - lineinfile:
+        dest: /home/$USER/.bashrc
+        state: present
+        line: "{{ item }}"
       with_items:
         - alias gc='git commit'
         - alias gp='git push'
