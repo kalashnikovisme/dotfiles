@@ -1,10 +1,25 @@
 ---
 - hosts: all
+  vars:
+    git_flow_dir_path: /home/$USER/git_flow/
   tasks:
-    - name: Copy upgrade_version script
+    - name: Create directory
+      file:
+        path: "{{ git_flow_dir_path }}"
+        state: directory
+
+    - name: Copy start release file
       copy:
-        src: ../files/upgrade_version
-        dest: /home/$USER/upgrade_version
+        src: ../files/start_release
+        dest: "{{ git_flow_dir_path }}/start_release"
+        mode: u=rwx,g=r,o=r
+
+    - name: Copy finish release file
+      copy:
+        src: ../files/finish_release
+        dest: "{{ git_flow_dir_path }}/finish_release"
+        mode: u=rwx,g=r,o=r
+
     - lineinfile:
         dest: /home/$USER/.bashrc
         state: present
@@ -24,8 +39,8 @@
         - alias gff='git flow feature finish'
         - alias ghs='git flow hotfix start'
         - alias ghf='git flow hotfix finish'
-        - alias grs='~/upgrade_version'
-        - alias grf='git flow release finish'
+        - alias grs='~/git_flow/start_release'
+        - alias grf='~/git_flow/finish_release'
         - alias gups='git push --set-upstream origin'
         - alias glt='git describe --abbrev=0 --tags'
         - alias gplr='git pull --rebase'

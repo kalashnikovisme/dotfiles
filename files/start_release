@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Example input semantic versioning string
-semver=$(glt)
+semver=$(git describe --abbrev=0 --tags)
 
 # Split the string into its major, minor, and patch versions
 major=$(echo $semver | cut -d"." -f1)
@@ -12,11 +12,11 @@ fix=$(echo $semver | cut -d"." -f4)
 # Determine the level of upgrade (major, minor, or patch)
 # Here, we're upgrading the minor version by default, unless specified otherwise
 upgrade_level="major"
-if [[ "$2" == "minor" ]]; then
+if [[ "$1" == "minor" ]]; then
   upgrade_level="minor"
-elif [[ "$2" == "patch" ]]; then
+elif [[ "$1" == "patch" ]]; then
   upgrade_level="patch"
-elif [[ "$2" == "fix" ]]; then
+elif [[ "$1" == "fix" ]]; then
   upgrade_level="fix"
 fi
 
@@ -46,4 +46,4 @@ if [[ "$fix" != "0" ]]; then
   new_semver="$new_semver.$fix"
 fi
 
-git release start $new_semver
+git flow release start $new_semver
