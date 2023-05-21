@@ -2,3 +2,6 @@
   tasks:
     - name: Set Terminal as favorite app
       command: gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'sidekick-browser.desktop', 'piavpn.desktop', 'gnome-control-center.desktop']"
+      
+    - name: Set dark theme
+      command: gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
