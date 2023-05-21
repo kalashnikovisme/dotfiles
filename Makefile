@@ -10,7 +10,7 @@ install_environment:
 	sudo ansible-playbook languages/nodejs.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook content/obs.yml -i local -vv -e curdir=$(CURDIR)
-	sudo ansible-playbook devtools/kubernetes.yml -i local -vv -e curdir=$(CURDIR)
+	# sudo ansible-playbook devtools/kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook communication/slack.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-playbook package_managers/appimages.yml -i local -vv
