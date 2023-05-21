@@ -34,11 +34,12 @@
     - file:
         path: /home/$USER/.vim
         state: directory
-    - copy: src={{ curdir }}/files/vimrc dest=/home/$USER/.vimrc
+    - copy:
+        src: "{{ curdir }}/files/vimrc"
+        dest: "/home/$USER/.vimrc"
     - name: Install deoplete
       command: apt install -y python3-pip
     - pip:
         name:
           - pynvim
           - msgpack
-    - command: "vim +PlugClean +PlugInstall +qall"
