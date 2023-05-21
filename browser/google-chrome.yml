@@ -1,0 +1,9 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - get_url: 
+        url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+        dest: ./linux_signing_key.pub
+    - command: sudo apt-key add ./linux_signing_key.pub
+    - shell: "sudo apt-get -y update"
+    - shell: "sudo apt-get install -y google-chrome-stable"
