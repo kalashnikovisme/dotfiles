@@ -10,7 +10,7 @@
       command: dpkg -i sidekick.deb
 
     - name: Install sidekick browser
-      command: apt install -yf\
+      command: apt install -yf
       
     - name: Remove unused package sources
       file:
