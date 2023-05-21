@@ -8,6 +8,7 @@
 
     - name: Depackage sidekick deb
       command: dpkg -i sidekick.deb
+      become: true
 
     - name: Install sidekick browser
       command: apt install -yf
