@@ -5,12 +5,9 @@
 
     - name: "Ruby: RVM installation"
       command: bash ./rvm_install.bash
-
-    - name: "Ruby: create .gemrc file"
-      become: true
-      command: "touch ~/.gemrc"
-
-    - name: "Ruby: fill .gemrc file with needed stuff"
-      lineinfile:
-        line: "gem: --no-ri --no-rdoc"
-        dest: "/home/$USER/.gemrc"
+      
+    - name: Add gemrc file
+      copy:
+        content: |
+          gem: --no-ri --no-rdoc
+        dest: /home/$USER/.gemrc
