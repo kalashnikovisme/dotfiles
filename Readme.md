@@ -3,7 +3,7 @@
 Just run
 
 ```
-sudo apt-get install unzip && wget https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh
+sudo apt-get install unzip && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh
 ```
 
 ## What is it?
