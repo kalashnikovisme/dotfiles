@@ -1,5 +1,6 @@
 install_environment:
 	sudo ansible-playbook browser/sidekick.yml -i local -vv -e curdir=$(CURDIR)
+	sudo ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR)
 	sudo ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	sudo ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	sudo ansible-playbook devtools/git.yml -i local -vv
