@@ -5,3 +5,6 @@
       
     - name: Set dark theme
       command: gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+      
+    - name: Set accent color as Purple
+      command: gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple'
