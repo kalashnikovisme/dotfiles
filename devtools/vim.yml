@@ -35,7 +35,7 @@
         path: /home/$USER/.vim
         state: directory
     - copy:
-        src: "{{ curdir }}/files/vimrc"
+        src: "../files/vimrc"
         dest: "/home/$USER/.vimrc"
     - name: Install deoplete
       command: apt install -y python3-pip
