@@ -11,6 +11,7 @@
           - curl
     - name: "Docker: prepare installation"
       command: sh ./docker/prepare_installation.sh
+      become: true
     - name: "Docker: install"
       apt:
         pkg:
@@ -25,7 +26,8 @@
         name: docker
         state: present
     - name: "Install docker-compose version: {{ docker_compose_version }}"
-      command: curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+      command: "curl -L https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose"
+      become: true
     - name: Add execute permissions
       file:
         path: /usr/local/bin/docker-compose

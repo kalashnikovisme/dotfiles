@@ -1,10 +1,15 @@
 - hosts: all
+  become_user: root
   tasks:
     - apt:
         pkg:
           - software-properties-common
+      become: true
     - command: add-apt-repository ppa:appimagelauncher-team/stable
+      become: true
     - command: apt-get update
+      become: true
     - apt:
         pkg:
           - appimagelauncher
+      become: true

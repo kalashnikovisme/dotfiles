@@ -1,3 +1,4 @@
+--- 
 - hosts: all
   tasks:
     - name: Set Terminal as favorite app
@@ -10,10 +11,8 @@
       command: gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple'
 
     - name: Set auto-hide dock
-      command:
-        - gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-        - gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
+      command: gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+      command: gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
         
     - name: Set dock to Bottom
-      command:
-        - gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+      command: gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM

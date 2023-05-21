@@ -20,9 +20,8 @@ install_environment:
 	ansible-playbook devtools/heroku.yml -i local -vv
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
 	ansible-playbook devtools/httpie.yml -i local -vv
-	ansible-playbook sec/settings.yml
+	ansible-playbook other/settings.yml -i local -vv
 	mkdir ~/projects/
-	ansible-playbook sec/ssh.yml -i local -vv
 	ansible-playbook sec/vpn.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common

@@ -2,9 +2,14 @@
   become_user: root
   tasks:
     - name: Install obs && virtual camera
-      command: apt install -y v4l2loopback-dkms
+      become: true
+      apt:
+        pkg:
+          - v4l2loopback-dkms
     - name: Update repository for OBS
       shell: sudo add-apt-repository ppa:obsproject/obs-studio
       shell: sudo apt -y update
     - name: Install obs
-      command: apt install -y obs-studio
+      apt:
+        pkg:
+          - obs-studio
