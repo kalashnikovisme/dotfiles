@@ -21,6 +21,7 @@ install_environment:
 	sudo ansible-playbook package_managers/app_image_launcher.yml -i local -vv
 	sudo ansible-playbook devtools/httpie.yml -i local -vv
 	ansible-playbook sec/settings.yml
+	mkdir ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
