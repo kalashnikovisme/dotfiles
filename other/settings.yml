@@ -8,3 +8,8 @@
       
     - name: Set accent color as Purple
       command: gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-purple'
+
+    - name: Set auto-hide dock
+      command:
+        - gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+        - gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
