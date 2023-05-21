@@ -2,7 +2,9 @@
   become_user: root
   tasks:
     - name: Download sidekick deb file
-      command: wget -o sidekick.deb https://cdn.meetsidekick.com/browser-builds/sidekick-linux-release-x64-112.44.2.32802-45677a6.deb
+      get_url:
+        url: https://cdn.meetsidekick.com/browser-builds/sidekick-linux-release-x64-112.44.2.32802-45677a6.deb
+        dest: ./sidekick.deb
 
     - name: Depackage sidekick deb
       command: dpkg -i sidekick.deb
