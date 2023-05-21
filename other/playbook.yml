@@ -16,10 +16,6 @@
     - command: sudo apt-get -f install
     - command: apt install -y gimp gnome-tweaks
       become: true
-    - shell: "wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -"
-    - shell: "sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google-chrome.list'"
-    - shell: "sudo apt-get -y update"
-    - shell: "sudo apt-get install -y google-chrome-stable"
     - copy:
         src: "{{ curdir }}/files/bashrc"
         dest: "~/.bashrc"
