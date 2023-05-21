@@ -4,6 +4,11 @@
       get_url:
         url: https://installers.privateinternetaccess.com/download/pia-linux-3.3.1-06924.run
         dest: ./download_installer_linux.sh
+        
+    - name: Change file mode
+      file:
+        path: ./download_installer_linux.sh
+        mode: "+x"
 
     - name: "Private Internet Access: Install"
       command: ./download_installer_linux.sh
