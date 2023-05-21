@@ -4,3 +4,4 @@ Outline-Client.AppImage
 rvm_install.bash
 rust_install.sh
 devtools/HTTPie.AppImage
+*.deb
