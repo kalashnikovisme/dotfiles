@@ -14,5 +14,5 @@
     - name: Install git-flow
       command: apt-get -y install git-flow
     - copy:
-        src: "./files/gitignore"
+        src: "../files/gitignore"
         dest: "~/.gitignore"
