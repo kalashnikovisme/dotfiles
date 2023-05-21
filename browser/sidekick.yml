@@ -12,6 +12,7 @@
 
     - name: Install sidekick browser
       command: apt install -yf
+      become: true
       
     - name: Remove unused package sources
       file:
