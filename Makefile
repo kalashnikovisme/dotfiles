@@ -22,6 +22,7 @@ install_environment:
 	sudo ansible-playbook devtools/httpie.yml -i local -vv
 	ansible-playbook sec/settings.yml
 	mkdir ~/projects/
+	ansible-playbook sec/ssh.yml -i local -vv
 	ansible-playbook sec/vpn.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
