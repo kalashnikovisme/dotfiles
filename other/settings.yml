@@ -1,4 +1,4 @@
 - hosts: all
   tasks:
     - name: Set Terminal as favorite app
-      command: gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop']"
+      command: gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'sidekick-browser.desktop', 'piavpn.desktop', 'gnome-control-center.desktop']"
