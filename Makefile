@@ -12,6 +12,8 @@ install_environment:
 	ansible-playbook content/obs.yml -i local -vv -e curdir=$(CURDIR)
 	# sudo ansible-playbook devtools/kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook communication/slack.yml -i local -vv -e curdir=$(CURDIR)
+	ansible-playbook communication/discord.yml -i local -vv -e curdir=$(CURDIR)
+	ansible-playbook communication/spotify.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
