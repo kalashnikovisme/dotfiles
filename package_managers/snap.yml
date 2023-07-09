@@ -2,8 +2,5 @@
   become_user: root
   tasks: 
     - community.general.snap:
-        name:
-          - rocketchat-desktop
-    - community.general.snap:
         name: glab
         channel: latest/edge
