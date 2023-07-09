@@ -18,3 +18,4 @@
       file:
         state: absent
         path: /etc/apt/sources.list.d/sidekick-browser.list
+      become: true
