@@ -5,7 +5,7 @@ install_environment:
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
 	ansible-playbook other/playbook.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
+	# ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
 	ansible-playbook devtools/docker.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook languages/nodejs.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR)
