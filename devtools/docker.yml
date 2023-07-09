@@ -1,6 +1,7 @@
 - hosts: all
   vars:
     docker_compose_version: "2.19.1"
+  become_user: root
   tasks: 
     - name: "Docker: Update the apt package index and install packages to allow apt to use a repository over HTTPS"
       apt:
