@@ -1,7 +1,9 @@
 ---
 - hosts: all
+  become_user: root
   tasks:
     - name: Install audacity
       community.general.snap:
         name:
           - audacity
+      become: true
