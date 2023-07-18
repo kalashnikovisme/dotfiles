@@ -5,3 +5,4 @@
       community.general.snap:
         name:
           - slack
+      become: true
