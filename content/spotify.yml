@@ -1,7 +1,9 @@
 ---
 - hosts: all
+  become_user: root
   tasks:
     - name: Install spotify
       community.general.snap:
         name:
           - spotify
+      become: true
