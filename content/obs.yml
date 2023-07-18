@@ -13,3 +13,4 @@
       apt:
         pkg:
           - obs-studio
+      become: true
