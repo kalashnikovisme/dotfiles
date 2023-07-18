@@ -2,6 +2,7 @@
   become_user: root
   tasks:
     - name: Install heroku
+      become: true
       community.general.snap:
         classic: true
         name:
