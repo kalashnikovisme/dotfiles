@@ -9,6 +9,7 @@
           - ca-certificates
           - gnupg
           - curl
+      become: true
     - name: "Docker: prepare installation"
       command: sh ./docker/prepare_installation.sh
       become: true
