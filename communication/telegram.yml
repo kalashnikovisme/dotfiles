@@ -1,7 +1,0 @@
-- hosts: all
-  tasks:
-    - name: "Telegram: installation"
-      become: true
-      apt:
-        pkg:
-          - telegram-desktop
