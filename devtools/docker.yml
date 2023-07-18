@@ -22,6 +22,7 @@
           - containerd.io
           - docker-buildx-plugin
           - docker-compose-plugin
+      become: true
     - name: Post-install docker actions. Create docker group
       group:
         name: docker
