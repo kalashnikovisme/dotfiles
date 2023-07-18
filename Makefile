@@ -17,7 +17,6 @@ install_environment:
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
-	ansible-playbook communication/telegram.yml -i local -vv
 	ansible-playbook languages/rust.yml -i local -vv
 	ansible-playbook devtools/heroku.yml -i local -vv
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
