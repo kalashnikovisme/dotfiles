@@ -24,6 +24,8 @@ install_environment:
 	ansible-playbook other/settings.yml -i local -vv
 	mkdir ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
+        ansible-galaxy collection install community.crypto
+        ansible-playbook sec/ssh.yml -i local -vv
 install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
