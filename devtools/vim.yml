@@ -1,6 +1,10 @@
 ---
 - hosts: all
   tasks:
+    - name: Copy .vimrc file
+      copy:
+        src: ../files/vimrc
+        dest: ~/.vimrc
     - name: Install Vim and needed stuff
       become: true
       apt:
