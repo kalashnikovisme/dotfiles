@@ -50,6 +50,7 @@ It installs Ansible and use Ansible playbook to install other applications
 23. cmake
 24. Rust
 25. Telegram
+26. 1Password and 1Password CLI
 
 ### Configurations
 
