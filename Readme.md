@@ -8,7 +8,7 @@ sudo apt-get install unzip && wget -O main.zip https://github.com/kalashnikovism
 
 ## What is it?
 
-It's script to setup my own configuration for Ubuntu 20.04 (my current OS)
+It's script to setup my own configuration for Ubuntu 22.04 (my current OS)
 
 It installs Ansible and use Ansible playbook to install other applications
 
