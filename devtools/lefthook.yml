@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Install lefthook
+      community.general.snap:
+        name:
+          - lefthook
+      become: true

@@ -27,6 +27,7 @@ install_environment:
 	ansible-galaxy collection install community.crypto
 	ansible-playbook sec/ssh.yml -i local -vv
 	ansible-playbook devices/bluetooth.yml -i local -vv
+	ansible-playbook devices/lefthook.yml -i local -vv
 	./sec/1password_cli.sh
 install_ansible:
 	sudo apt install -y software-properties-common
