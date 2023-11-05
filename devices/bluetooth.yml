@@ -1,0 +1,10 @@
+- hosts: all
+  become_user: root
+  tasks:
+    - name: Install blueman
+      become: true
+      apt:
+        pkg:
+          - blueman
+          - bluez
+          - bluez-obexd
