@@ -53,8 +53,8 @@ imap <silent> <F5> <Esc>:noh<CR>
 map <F5> <Esc>:noh<CR>
 imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
 map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-imap <F8> <Esc>:set cursorcolumn!<CR>
-map <F8> <Esc>:set cursorcolumn!<CR>
+imap <F8> <Esc>:new<CR>:FZF<CR>
+map <F8> <Esc>:new<CR>:FZF<CR>
 nmap <F9> <Esc>:CarbonNowSh<CR>:CarbonNowSh<CR>
 vmap <F9> <Esc>:CarbonNowSh<CR>:CarbonNowSh<CR>
 map <C-p> :NERDTreeToggle<CR>
