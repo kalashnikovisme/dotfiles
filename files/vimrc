@@ -51,8 +51,10 @@ imap <F4> <Esc>:wq<CR>
 map <F4> <Esc>:wq<CR>
 imap <silent> <F5> <Esc>:noh<CR>
 map <F5> <Esc>:noh<CR>
-imap <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
-map <F7> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+imap <F6> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+map <F6> <Esc>:%s/:\([^ ]*\)\(\s*\)=>/\1:/g<CR>
+imap <F7> <Esc>:FZF<CR>
+map <F7> <Esc>:FZF<CR>
 imap <F8> <Esc>:new<CR>:FZF<CR>
 map <F8> <Esc>:new<CR>:FZF<CR>
 nmap <F9> <Esc>:CarbonNowSh<CR>:CarbonNowSh<CR>
