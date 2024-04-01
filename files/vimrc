@@ -81,6 +81,8 @@ au BufRead,BufNewFile *.tsx set syntax=typescript
 au BufRead,BufNewFile *.erdconfig set syntax=yaml
 au BufRead,BufNewFile *.hbs set syntax=html
 au BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
+au BufNewFile,BufRead template/*.rb set filetype=eruby
+au BufRead,BufNewFile *.rb.tt set syntax=eruby
 autocmd FileType vue noremap <buffer> <C-f> :%!vue-formatter<CR>
 set hlsearch
 if has("autocmd")
