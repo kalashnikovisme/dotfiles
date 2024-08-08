@@ -1,0 +1,15 @@
+- hosts: all
+  tasks:
+    - name: Download Hoppscotch
+      become_user: true
+      get_url:
+        url: https://github.com/hoppscotch/releases/releases/latest/download/Hoppscotch_linux_x64.deb
+        dest: ./Hoppscotch.AppImage
+
+    - name: Depackage Hoppscotch
+      command: dpkg -i Hoppscotch_linux_x64.deb
+      become: true
+
+    - name: Install Hoppscotch
+      command: apt install -yf
+      become: true
