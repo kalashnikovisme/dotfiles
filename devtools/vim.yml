@@ -52,7 +52,9 @@
       apt:
         pkg:
           - python3-pip
-    - pip:
-        name:
-          - pynvim
-          - msgpack
+    - name: Install pynvim and msgpack via apt
+      become: true
+      apt:
+        pkg:
+          - python3-pynvim
+          - python3-msgpack

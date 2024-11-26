@@ -40,15 +40,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'junegunn/goyo.vim'
-" Plug 'github/copilot.vim'
-" Plug 'dpayne/codeGPT.nvim'
-Plug 'groenewege/vim-csv-align'
 call plug#end()
-
 syntax enable
 filetype plugin indent on
-
-" Key mappings
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
 imap <F3> <Esc>:q!<CR>
@@ -70,8 +64,6 @@ nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-h> :wincmd h<CR>
 nmap <silent> <C-l> :wincmd l<CR>
-
-" Settings and autocommands
 let g:neocomplete#enable_at_startup = 2
 au BufRead,BufNewFile *.thor set syntax=ruby
 au BufRead,BufNewFile *.simplecov set syntax=ruby
@@ -99,4 +91,3 @@ endif " has("autocmd")
 let g:deoplete#enable_at_startup = 1
 autocmd FileType go set noexpandtab
 set clipboard=unnamedplus
-let g:codegpt_openai_api_key = $OPENAI_API_KEY

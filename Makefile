@@ -35,6 +35,8 @@ install_ansible:
 	ansible-galaxy collection install community.general
 update_vim:
 	ansible-playbook devtools/vim.yml -i local -vv
+update_neovim:
+	ansible-playbook devtools/neovim.yml -i local -vv
 update_bash:
 	cp -f files/bashrc ~/.bashrc
 	ansible-playbook tasks/alias.yml -i local -vv

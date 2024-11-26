@@ -1,0 +1,44 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Neovim
+      become: yes
+      apt:
+        name: neovim
+        state: present
+
+    - name: Ensure ~/.config/nvim directory exists
+      file:
+        path: ~/.config/nvim/
+        state: directory
+        mode: '0755'
+
+    - name: Copy existing .vimrc to ~/.config/nvim/init.vim
+      copy:
+        src: ~/.vimrc
+        dest: ~/.config/nvim/init.vim
+        remote_src: yes
+
+    - name: Replace instances of ~/.vim with ~/.config/nvim in init.vim
+      lineinfile:
+        path: ~/.config/nvim/init.vim
+        regexp: 'let data_dir = has(.nvim.) ? stdpath(.data.) . /site : ~/.vim'
+        line: 'let data_dir = has("nvim") ? stdpath("data") . "/site" : "~/.config/nvim"'
+
+    - name: Ensure vim-plug is installed for Neovim
+      shell: |
+        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      args:
+        creates: ~/.local/share/nvim/site/autoload/plug.vim
+
+    - name: Check if Neovim is installed successfully
+      command: nvim --version
+      register: nvim_version
+
+    - name: Debug output to ensure Neovim is working
+      debug:
+        var: nvim_version.stdout
+
+    - name: Test Neovim configuration by opening Neovim
+      shell: nvim +PlugInstall +qall
