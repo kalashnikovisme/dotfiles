@@ -51,8 +51,8 @@ imap <F4> <Esc>:wq<CR>
 map <F4> <Esc>:wq<CR>
 imap <silent> <F5> <Esc>:noh<CR>
 map <F5> <Esc>:noh<CR>
-imap <F6> <Esc>:%d<CR>
-map <F6> <Esc>:%d<CR>
+imap <F6> <Esc>:%d_ <CR>
+map <F6> <Esc>:%d_ <CR>
 imap <F7> <Esc>:FZF<CR>
 map <F7> <Esc>:FZF<CR>
 imap <F8> <Esc>:new<CR>:FZF<CR>
