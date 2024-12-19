@@ -40,9 +40,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'junegunn/goyo.vim'
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 " Plug 'dpayne/codeGPT.nvim'
-Plug 'groenewege/vim-csv-align'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 syntax enable

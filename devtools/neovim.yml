@@ -15,7 +15,7 @@
 
     - name: Copy existing .vimrc to ~/.config/nvim/init.vim
       copy:
-        src: ~/.vimrc
+        src: ../files/vimrc
         dest: ~/.config/nvim/init.vim
         remote_src: yes
 

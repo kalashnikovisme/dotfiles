@@ -33,8 +33,6 @@ install_ansible:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
 	ansible-galaxy collection install community.general
-update_vim:
-	ansible-playbook devtools/vim.yml -i local -vv
 update_neovim:
 	ansible-playbook devtools/neovim.yml -i local -vv
 update_bash:
