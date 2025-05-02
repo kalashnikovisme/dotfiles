@@ -91,3 +91,4 @@ endif " has("autocmd")
 let g:deoplete#enable_at_startup = 1
 autocmd FileType go set noexpandtab
 set clipboard=unnamedplus
+let g:codegpt_openai_api_key = $OPENAI_API_KEY
