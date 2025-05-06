@@ -91,6 +91,8 @@ au BufRead,BufNewFile *.hbs set syntax=html
 au BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
 au BufNewFile,BufRead template/*.rb set filetype=eruby
 au BufRead,BufNewFile *.rb.tt set syntax=eruby
+au BufRead,BufNewFile *.tf set filetype=terraform
+au BufRead,BufNewFile *.tfvars set filetype=terraform
 autocmd FileType vue noremap <buffer> <C-f> :%!vue-formatter<CR>
 set hlsearch
 if has("autocmd")
