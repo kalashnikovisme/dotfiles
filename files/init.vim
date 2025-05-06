@@ -40,6 +40,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'junegunn/goyo.vim'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 syntax enable
 filetype plugin indent on

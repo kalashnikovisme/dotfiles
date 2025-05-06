@@ -13,9 +13,9 @@
         state: directory
         mode: '0755'
 
-    - name: Copy existing .vimrc to ~/.config/nvim/init.vim
+    - name: Copy existing init.vim to ~/.config/nvim/init.vim
       copy:
-        src: ../files/vimrc
+        src: ../files/init.vim
         dest: ~/.config/nvim/init.vim
         remote_src: yes
 
