@@ -11,6 +11,7 @@
         - alias gap='git add -p'
         - alias ga='git add .'
         - alias gco='git checkout'
+        - alias gf='git fetch origin && git checkout'
         - alias gcF='git commit --amend'
         - alias gbc='git checkout -b'
         - alias gfs='git flow feature start'
