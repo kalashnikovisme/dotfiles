@@ -6,21 +6,29 @@ install_environment:
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
 	ansible-playbook other/playbook.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
+	if [ "$(OS)" = "ubuntu" ]; then \
+		ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR); \
+	fi
 	if [ "$(OS)" = "ubuntu" ]; then \
 		ansible-playbook devtools/docker.yml -i local -vv -e curdir=$(CURDIR); \
 	fi
 	ansible-playbook languages/nodejs.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR)
+	if [ "$(OS)" = "ubuntu" ]; then \
+		ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR); \
+	fi
 	ansible-playbook content/obs.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook communication/slack.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook communication/discord.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook content/spotify.yml -i local -vv -e curdir=$(CURDIR)
+	if [ "$(OS)" = "ubuntu" ]; then \
+		ansible-playbook communication/slack.yml -i local -vv -e curdir=$(CURDIR); \
+		ansible-playbook communication/discord.yml -i local -vv -e curdir=$(CURDIR); \
+		ansible-playbook content/spotify.yml -i local -vv -e curdir=$(CURDIR); \
+	fi
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
 	ansible-playbook languages/rust.yml -i local -vv
-	ansible-playbook devtools/heroku.yml -i local -vv
+	if [ "$(OS)" = "ubuntu" ]; then \
+		ansible-playbook devtools/heroku.yml -i local -vv; \
+	fi
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
 	ansible-playbook devtools/httpie.yml -i local -vv
 	ansible-playbook other/settings.yml -i local -vv
