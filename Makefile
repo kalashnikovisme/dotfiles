@@ -38,7 +38,6 @@ install_environment:
 	if [ "$(OS)" = "omarchy" ]; then \
 		ansible-playbook devices/monitor.yml -i local -vv; \
 	fi
-	./sec/1password_cli.sh
 install_ansible_ubuntu:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
