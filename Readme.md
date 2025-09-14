@@ -8,15 +8,15 @@ Just run
 sudo apt-get install unzip && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh ubuntu && cd ~ && sudo rm -rf main.zip dotfiles
 ```
 
-### Arch Linux
+### Omarchy
 
 ```
-sudo pacman -Sy --noconfirm unzip wget && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh arch && cd ~ && sudo rm -rf main.zip dotfiles
+sudo pacman -Sy --noconfirm unzip wget && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh omarchy && cd ~ && sudo rm -rf main.zip dotfiles
 ```
 
 ## What is it?
 
-It's script to setup my own configuration for Ubuntu or Arch Linux
+It's script to setup my own configuration for Ubuntu or Omarchy
 
 It installs Ansible and use Ansible playbook to install other applications
 

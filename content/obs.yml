@@ -23,7 +23,7 @@
       become: true
       when: ansible_pkg_mgr == 'apt'
 
-    - name: Install obs (Arch)
+    - name: Install obs (Omarchy)
       package:
         name:
           - obs-studio

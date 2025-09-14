@@ -6,7 +6,7 @@ OS="$1"
 
 if [ -z "$OS" ]; then
   if [ -f /etc/arch-release ]; then
-    OS="arch"
+    OS="omarchy"
   elif [ -f /etc/debian_version ]; then
     OS="ubuntu"
   fi
@@ -16,14 +16,13 @@ fi
 OS=$(echo "$OS" | tr '[:upper:]' '[:lower:]' | tr -d '\r\n')
 
 case "$OS" in
-  *arch*)
+  omarchy)
     echo 'Upgrade pacman'
     sudo pacman -Syu --noconfirm
     echo 'Install make'
     sudo pacman -S --noconfirm make
     echo 'Install ansible'
-    OS="arch"
-    make install_ansible_arch
+    make install_ansible_omarchy
     ;;
   *ubuntu*|*debian*)
     echo 'Upgrade apt'
@@ -37,7 +36,7 @@ case "$OS" in
     make install_ansible_ubuntu
     ;;
   *)
-    echo "Usage: $0 [arch|ubuntu]"
+    echo "Usage: $0 [omarchy|ubuntu]"
     exit 1
     ;;
 esac
