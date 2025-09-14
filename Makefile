@@ -1,16 +1,14 @@
 install_environment:
-	ansible-playbook browser/sidekick.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
 	ansible-playbook other/playbook.yml -i local -vv -e curdir=$(CURDIR)
-	# ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
+	ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
 	ansible-playbook devtools/docker.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook languages/nodejs.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/obs.yml -i local -vv -e curdir=$(CURDIR)
-	# sudo ansible-playbook devtools/kubernetes.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook communication/slack.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook communication/discord.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/spotify.yml -i local -vv -e curdir=$(CURDIR)
