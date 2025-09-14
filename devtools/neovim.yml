@@ -1,6 +1,17 @@
 ---
 - hosts: all
   tasks:
+    - name: Remove LazyVim directories on Omarchy
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - ~/.config/nvim
+        - ~/.local/share/nvim
+        - ~/.local/state/nvim
+        - ~/.cache/nvim
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
     - name: Install Neovim
       become: yes
       package:
