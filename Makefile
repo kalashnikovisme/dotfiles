@@ -22,8 +22,9 @@ install_environment:
 		ansible-playbook communication/discord.yml -i local -vv -e curdir=$(CURDIR); \
 		ansible-playbook content/spotify.yml -i local -vv -e curdir=$(CURDIR); \
 	fi
-	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook package_managers/appimages.yml -i local -vv
+       ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
+       ansible-playbook devtools/alacritty.yml -i local -vv
+       ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
 	ansible-playbook languages/rust.yml -i local -vv
 	if [ "$(OS)" = "ubuntu" ]; then \
