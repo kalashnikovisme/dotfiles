@@ -32,7 +32,7 @@ install_environment:
 	fi
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
 	ansible-playbook other/settings.yml -i local -vv
-	mkdir ~/projects/
+	mkdir -p ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
 	ansible-galaxy collection install community.crypto
 	ansible-playbook sec/ssh.yml -i local -vv
