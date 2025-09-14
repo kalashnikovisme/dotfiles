@@ -5,16 +5,16 @@
       become: true
       package:
         name: alacritty
-      when: ansible_pkg_mgr == 'pacman'
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
 
     - name: Ensure Alacritty config directory exists
       file:
         path: ~/.config/alacritty
         state: directory
-      when: ansible_pkg_mgr == 'pacman'
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
 
     - name: Configure Alacritty
       copy:
         src: ../files/alacritty.yml
         dest: ~/.config/alacritty/alacritty.yml
-      when: ansible_pkg_mgr == 'pacman'
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
