@@ -92,5 +92,3 @@
           - gnome-tweaks
       become: yes
       when: ansible_pkg_mgr == 'pacman'
-    - command: "dpkg --add-architecture i386"
-      become: true
