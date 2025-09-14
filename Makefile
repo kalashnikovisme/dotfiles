@@ -24,7 +24,7 @@ install_environment:
 	fi
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook devtools/alacritty.yml -i local -vv
-    ansible-playbook package_managers/appimages.yml -i local -vv
+	ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
 	ansible-playbook languages/rust.yml -i local -vv
 	if [ "$(OS)" = "ubuntu" ]; then \
