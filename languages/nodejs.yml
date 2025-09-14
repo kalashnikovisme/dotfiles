@@ -1,9 +1,30 @@
+---
 - hosts: all
-  become_user: root
-  tasks: 
+  tasks:
     - name: Install nvm
-      shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
-    - name: Install yarn
-      shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-      shell: echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-      shell: sudo apt -y update && sudo apt install -y yarn
+      shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+    - name: Add Yarn apt key
+      become: yes
+      shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Add Yarn repository
+      become: yes
+      shell: echo "deb https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install yarn (Debian)
+      become: yes
+      apt:
+        name: yarn
+        update_cache: yes
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install yarn (Arch)
+      become: yes
+      pacman:
+        name: yarn
+        state: present
+      when: ansible_pkg_mgr == 'pacman'
+
