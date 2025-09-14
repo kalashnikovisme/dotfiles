@@ -4,7 +4,6 @@
     email: "kalashnikovisme@gmail.com"
   tasks:
     - name: Install git
-      become: true
       package:
         name:
           - git
@@ -13,11 +12,6 @@
     - command: git config --global core.excludesfile ~/.gitignore
     - command: git config --global core.editor "vim"
     - command: git config --global init.defaultBranch "main"
-    - name: Install git-flow
-      become: true
-      package:
-        name:
-          - git-flow
     - copy:
         src: "../files/gitignore"
         dest: "~/.gitignore"
