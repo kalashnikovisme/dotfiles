@@ -52,7 +52,7 @@ It installs Ansible and use Ansible playbook to install other applications
 17. rvm*
 18. GIMP
 19. Ubuntu Tweaks
-20. Google Chrome
+20. Google Chrome (Ubuntu only)
 21. Rocket.Chat Desktop
 22. pyenv
 23. cmake
