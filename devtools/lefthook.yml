@@ -2,8 +2,16 @@
 - hosts: all
   become_user: root
   tasks:
-    - name: Install lefthook
+    - name: Install lefthook as a gem on Omarchy
+      community.general.gem:
+        name: lefthook
+        state: present
+      become: true
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
+    - name: Install lefthook via snap
       community.general.snap:
         name:
           - lefthook
       become: true
+      when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
