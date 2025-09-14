@@ -34,7 +34,7 @@ install_environment:
 	ansible-playbook other/settings.yml -i local -vv
 	mkdir -p ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
-	ansible-playbook devices/lefthook.yml -i local -vv
+	ansible-playbook devtools/lefthook.yml -i local -vv
 	ansible-playbook devices/monitor.yml -i local -vv
 	./sec/1password_cli.sh
 install_ansible_ubuntu:
