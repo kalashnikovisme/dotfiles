@@ -12,6 +12,9 @@ if [ -z "$OS" ]; then
   fi
 fi
 
+# Normalize the OS argument to avoid common copy/paste issues
+OS=$(echo "$OS" | tr '[:upper:]' '[:lower:]' | tr -d '\r\n')
+
 case "$OS" in
   omarchy)
     echo 'Upgrade pacman'
@@ -21,7 +24,7 @@ case "$OS" in
     echo 'Install ansible'
     make install_ansible_omarchy
     ;;
-  ubuntu)
+  *ubuntu*|*debian*)
     echo 'Upgrade apt'
     sudo apt-get -y upgrade
     echo 'apt-get update'
@@ -29,6 +32,7 @@ case "$OS" in
     echo 'Install make'
     sudo apt-get install -y make
     echo 'Install ansible'
+    OS="ubuntu"
     make install_ansible_ubuntu
     ;;
   *)
