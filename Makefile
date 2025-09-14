@@ -34,7 +34,6 @@ install_environment:
 	ansible-playbook other/settings.yml -i local -vv
 	mkdir -p ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
-	ansible-playbook devices/bluetooth.yml -i local -vv
 	ansible-playbook devices/lefthook.yml -i local -vv
 	ansible-playbook devices/monitor.yml -i local -vv
 	./sec/1password_cli.sh
@@ -50,3 +49,5 @@ update_neovim:
 update_bash:
 	cp -f files/bashrc ~/.bashrc
 	ansible-playbook tasks/alias.yml -i local -vv
+aquarium:
+	ansible-playbook devices/bluetooth.yml -i local -vv
