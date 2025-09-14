@@ -3,7 +3,7 @@
   tasks:
     - name: Install Neovim
       become: yes
-      apt:
+      package:
         name: neovim
         state: present
 

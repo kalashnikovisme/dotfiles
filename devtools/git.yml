@@ -6,9 +6,9 @@
   tasks:
     - name: Install git
       become: true
-      apt:
-        pkg:
-          - git-core
+      package:
+        name:
+          - git
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
@@ -16,8 +16,8 @@
     - command: git config --global init.defaultBranch "main"
     - name: Install git-flow
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - git-flow
     - copy:
         src: "../files/gitignore"
