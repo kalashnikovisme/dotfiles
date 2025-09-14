@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Alacritty (Omarchy)
+      become: true
+      package:
+        name: alacritty
+      when: ansible_pkg_mgr == 'pacman'
+
+    - name: Ensure Alacritty config directory exists
+      file:
+        path: ~/.config/alacritty
+        state: directory
+      when: ansible_pkg_mgr == 'pacman'
+
+    - name: Configure Alacritty
+      copy:
+        src: ../files/alacritty.yml
+        dest: ~/.config/alacritty/alacritty.yml
+      when: ansible_pkg_mgr == 'pacman'
