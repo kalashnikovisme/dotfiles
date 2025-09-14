@@ -1,16 +1,31 @@
 - hosts: all
   become_user: root
   tasks:
-    - name: Install obs && virtual camera
+    - name: Install obs virtual camera (Debian)
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - v4l2loopback-dkms
-    - name: Update repository for OBS
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Update repository for OBS (Debian)
       shell: sudo add-apt-repository ppa:obsproject/obs-studio
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Refresh packages (Debian)
       shell: sudo apt -y update
-    - name: Install obs
-      apt:
-        pkg:
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install obs (Debian)
+      package:
+        name:
           - obs-studio
       become: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install obs (Arch)
+      package:
+        name:
+          - obs-studio
+      become: true
+      when: ansible_pkg_mgr == 'pacman'

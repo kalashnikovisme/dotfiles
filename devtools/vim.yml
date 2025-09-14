@@ -7,8 +7,8 @@
         dest: ~/.vimrc
     - name: Install Vim and needed stuff
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - vim
           - vim-nox
           - vim-gtk
@@ -48,13 +48,29 @@
     - copy:
         src: "../files/vimrc"
         dest: "~/.vimrc"
-    - name: Install deoplete
-      apt:
-        pkg:
+    - name: Install deoplete (Debian)
+      package:
+        name:
           - python3-pip
-    - name: Install pynvim and msgpack via apt
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install deoplete (Arch)
+      package:
+        name:
+          - python-pip
+      when: ansible_pkg_mgr == 'pacman'
+    - name: Install pynvim and msgpack (Debian)
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - python3-pynvim
           - python3-msgpack
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install pynvim and msgpack (Arch)
+      become: true
+      package:
+        name:
+          - python-pynvim
+          - python-msgpack
+      when: ansible_pkg_mgr == 'pacman'

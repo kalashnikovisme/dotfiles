@@ -2,8 +2,8 @@
   tasks:
     - name: "Rust: install clang"
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - clang
 
     - name: "Rust: download rustup"

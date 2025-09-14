@@ -2,13 +2,21 @@
 
 Just run
 
+### Ubuntu
+
 ```
-sudo apt-get install unzip && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh && cd ~ && sudo rm -rf main.zip dotfiles
+sudo apt-get install unzip && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh ubuntu && cd ~ && sudo rm -rf main.zip dotfiles
+```
+
+### Arch Linux
+
+```
+sudo pacman -Sy --noconfirm unzip wget && wget -O main.zip https://github.com/kalashnikovisme/dotfiles/archive/refs/heads/main.zip && unzip main.zip -d dotfiles && cd dotfiles/dotfiles-main && ./main.sh arch && cd ~ && sudo rm -rf main.zip dotfiles
 ```
 
 ## What is it?
 
-It's script to setup my own configuration for Ubuntu 22.04 (my current OS)
+It's script to setup my own configuration for Ubuntu or Arch Linux
 
 It installs Ansible and use Ansible playbook to install other applications
 

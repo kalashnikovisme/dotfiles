@@ -1,9 +1,9 @@
 ---
 - hosts: all
   tasks: 
-    - name: Install needed packages
-      apt:
-        pkg:
+    - name: Install needed packages (Debian)
+      package:
+        name:
           - xclip
           - htop
           - graphviz
@@ -53,7 +53,46 @@
           - gimp
           - gnome-tweaks
       become: yes
-      become: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install needed packages (Arch)
+      package:
+        name:
+          - xclip
+          - htop
+          - graphviz
+          - curl
+          - base-devel
+          - openssl
+          - readline
+          - zlib
+          - sqlite
+          - llvm
+          - xz
+          - tk
+          - automake
+          - libtool
+          - bison
+          - libffi
+          - lzma
+          - openvpn
+          - vlc
+          - postgresql
+          - gparted
+          - arduino
+          - ffmpeg
+          - net-tools
+          - libpqxx
+          - ruby
+          - redis
+          - cmake
+          - ncdu
+          - mumble
+          - imagemagick
+          - gimp
+          - gnome-tweaks
+      become: yes
+      when: ansible_pkg_mgr == 'pacman'
     # - copy:
     #     src: "../files/pg_hba.conf"
     #     dest: /etc/postgresql/14/main/pg_hba.conf

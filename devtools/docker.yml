@@ -3,26 +3,36 @@
     docker_compose_version: "2.19.1"
   become_user: root
   tasks: 
-    - name: "Docker: Update the apt package index and install packages to allow apt to use a repository over HTTPS"
-      apt:
-        pkg:
+    - name: "Docker: Install prerequisites (Debian)"
+      package:
+        name:
           - ca-certificates
           - gnupg
           - curl
       become: true
+      when: ansible_pkg_mgr == 'apt'
     - name: "Docker: prepare installation"
       command: sh ./docker/prepare_installation.sh
       become: true
-    - name: "Docker: install"
-      apt:
-        pkg:
-          # - docker.io
+      when: ansible_pkg_mgr == 'apt'
+    - name: "Docker: install (Debian)"
+      package:
+        name:
           - docker-ce
           - docker-ce-cli
           - containerd.io
           - docker-buildx-plugin
           - docker-compose-plugin
       become: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: "Docker: install (Arch)"
+      package:
+        name:
+          - docker
+          - docker-compose
+      become: true
+      when: ansible_pkg_mgr == 'pacman'
     - name: Post-install docker actions. Create docker group
       group:
         name: docker

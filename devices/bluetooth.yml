@@ -1,10 +1,10 @@
 - hosts: all
   become_user: root
   tasks:
-    - name: Install blueman
+    - name: Install bluetooth packages
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - blueman
           - bluez
           - bluez-obexd

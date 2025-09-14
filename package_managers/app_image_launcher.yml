@@ -1,15 +1,19 @@
 - hosts: all
   become_user: root
   tasks:
-    - apt:
-        pkg:
+    - package:
+        name:
           - software-properties-common
       become: true
+      when: ansible_pkg_mgr == 'apt'
     - command: add-apt-repository ppa:appimagelauncher-team/stable
       become: true
+      when: ansible_pkg_mgr == 'apt'
     - command: apt-get update
       become: true
-    - apt:
-        pkg:
+      when: ansible_pkg_mgr == 'apt'
+    - package:
+        name:
           - appimagelauncher
       become: true
+      when: ansible_pkg_mgr == 'apt'

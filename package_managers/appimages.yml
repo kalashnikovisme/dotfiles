@@ -3,6 +3,7 @@
   tasks:
     - name: "FUSE2: Install"
       become: true
-      apt:
-        pkg:
+      package:
+        name:
           - libfuse2
+      when: ansible_pkg_mgr == 'apt'
