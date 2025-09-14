@@ -106,7 +106,21 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/go/bin # Add Go to PATH
 PATH=$PATH:$HOME/.pyenv/shims
 source ~/.rvm/scripts/rvm
-export PS1='\[\033[36m\]\w$(__git_ps1 "\[\033[32m\](%s)") \[\033[34m\][\D{%H:%M}]: \[\033[37m\]'
+# Try to enable __git_ps1 if available
+if ! type __git_ps1 >/dev/null 2>&1; then
+  if [ -f "$(git --exec-path 2>/dev/null)/git-sh-prompt" ]; then
+    . "$(git --exec-path)/git-sh-prompt"
+  elif [ -f /usr/lib/git-core/git-sh-prompt ]; then
+    . /usr/lib/git-core/git-sh-prompt
+  fi
+fi
+
+if type __git_ps1 >/dev/null 2>&1; then
+  export PS1='\[\033[36m\]\w$(__git_ps1 "\[\033[32m\](%s)") \[\033[34m\][\D{%H:%M}]: \[\033[37m\]'
+else
+  export PS1='\[\033[36m\]\w \[\033[34m\][\D{%H:%M}]: \[\033[37m\]'
+fi
+
 if [ -f /etc/bash_completion  ]; then
   . /etc/bash_completion
 fi
