@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+    - name: Configure keyboard layout and remap keys
+      command: setxkbmap -layout us,ru -option ctrl:nocaps -option grp:lctrl_toggle
