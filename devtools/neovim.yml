@@ -18,6 +18,14 @@
         name: neovim
         state: present
 
+    - name: Ensure pynvim Python module is installed on Omarchy
+      pip:
+        name: pynvim
+        state: latest
+        executable: pip3
+        extra_args: --user
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
     - name: Ensure ~/.config/nvim directory exists
       file:
         path: ~/.config/nvim/
