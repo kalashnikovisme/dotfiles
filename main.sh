@@ -15,6 +15,13 @@ fi
 # Normalize the OS argument to avoid common copy/paste issues
 OS=$(echo "$OS" | tr '[:upper:]' '[:lower:]' | tr -d '\r\n')
 
+# Collect sudo password for Ansible privilege escalation
+read -s -p "Enter sudo password: " ANSIBLE_BECOME_PASS
+echo
+echo "$ANSIBLE_BECOME_PASS" | sudo -S true
+export ANSIBLE_BECOME_PASS
+export ANSIBLE_BECOME_PASSWORD="$ANSIBLE_BECOME_PASS"
+
 case "$OS" in
   omarchy)
     echo 'Upgrade pacman'
