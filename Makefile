@@ -34,8 +34,6 @@ install_environment:
 	ansible-playbook other/settings.yml -i local -vv
 	mkdir -p ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
-	ansible-galaxy collection install community.crypto
-	ansible-playbook sec/ssh.yml -i local -vv
 	ansible-playbook devices/bluetooth.yml -i local -vv
 	ansible-playbook devices/lefthook.yml -i local -vv
 	ansible-playbook devices/monitor.yml -i local -vv
