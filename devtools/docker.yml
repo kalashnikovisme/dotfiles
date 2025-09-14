@@ -3,19 +3,19 @@
     docker_compose_version: "2.19.1"
   become_user: root
   tasks: 
-    - name: "Docker: Install prerequisites (Debian)"
+    - name: "Docker: Install prerequisites (Ubuntu)"
       package:
         name:
           - ca-certificates
           - gnupg
           - curl
       become: true
-      when: ansible_pkg_mgr == 'apt'
+      when: ansible_pkg_mgr == 'apt' and ansible_distribution == 'Ubuntu'
     - name: "Docker: prepare installation"
       command: sh ./docker/prepare_installation.sh
       become: true
-      when: ansible_pkg_mgr == 'apt'
-    - name: "Docker: install (Debian)"
+      when: ansible_pkg_mgr == 'apt' and ansible_distribution == 'Ubuntu'
+    - name: "Docker: install (Ubuntu)"
       package:
         name:
           - docker-ce
@@ -24,24 +24,19 @@
           - docker-buildx-plugin
           - docker-compose-plugin
       become: true
-      when: ansible_pkg_mgr == 'apt'
-
-    - name: "Docker: install (Omarchy)"
-      package:
-        name:
-          - docker
-          - docker-compose
-      become: true
-      when: ansible_pkg_mgr == 'pacman'
+      when: ansible_pkg_mgr == 'apt' and ansible_distribution == 'Ubuntu'
     - name: Post-install docker actions. Create docker group
       group:
         name: docker
         state: present
+      when: ansible_distribution == 'Ubuntu'
     - name: "Install docker-compose version: {{ docker_compose_version }}"
       command: 'curl -L "https://github.com/docker/compose/releases/download/v{{ docker_compose_version }}/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose'
       become: true
+      when: ansible_distribution == 'Ubuntu'
     - name: Add execute permissions
       become: true
       file:
         path: /usr/local/bin/docker-compose
         mode: +x
+      when: ansible_distribution == 'Ubuntu'

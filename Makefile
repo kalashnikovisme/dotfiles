@@ -7,7 +7,9 @@ install_environment:
 	ansible-playbook devtools/git.yml -i local -vv
 	ansible-playbook other/playbook.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook package_managers/snap.yml -i local -vvv -e curdir=$(CURDIR)
-	ansible-playbook devtools/docker.yml -i local -vv -e curdir=$(CURDIR)
+	if [ "$(OS)" = "ubuntu" ]; then \
+		ansible-playbook devtools/docker.yml -i local -vv -e curdir=$(CURDIR); \
+	fi
 	ansible-playbook languages/nodejs.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/audacity.yml -i local -vv -e curdir=$(CURDIR)
 	ansible-playbook content/obs.yml -i local -vv -e curdir=$(CURDIR)
