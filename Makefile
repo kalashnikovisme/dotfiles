@@ -30,7 +30,6 @@ install_environment:
 		ansible-playbook devtools/heroku.yml -i local -vv; \
 	fi
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
-	ansible-playbook devtools/httpie.yml -i local -vv
 	ansible-playbook other/settings.yml -i local -vv
 	mkdir ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
