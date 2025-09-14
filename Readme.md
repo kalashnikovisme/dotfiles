@@ -25,6 +25,7 @@ It installs Ansible and use Ansible playbook to install other applications
 * [vimrc](https://github.com/kalashnikovisme/dotfiles/blob/master/files/vimrc)
 * [gitconfig](https://github.com/kalashnikovisme/dotfiles/blob/master/files/.gitconfig)
 * [bashrc](https://github.com/kalashnikovisme/dotfiles/blob/master/files/bashrc)
+* [bashrc_omarchy](https://github.com/kalashnikovisme/dotfiles/blob/master/files/bashrc_omarchy)
 * [gitignore](https://github.com/kalashnikovisme/dotfiles/blob/master/files/gitignore)
 
 ## Actions
@@ -62,5 +63,5 @@ It installs Ansible and use Ansible playbook to install other applications
 
 ### Configurations
 
-* bashrc
+* bashrc / bashrc_omarchy
 * dpkg

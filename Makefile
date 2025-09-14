@@ -49,7 +49,11 @@ install_ansible_omarchy:
 update_neovim:
 	ansible-playbook devtools/neovim.yml -i local -vv
 update_bash:
-	cp -f files/bashrc ~/.bashrc
+	if [ "$(OS)" = "omarchy" ]; then \
+		cp -f files/bashrc_omarchy ~/.bashrc; \
+	else \
+		cp -f files/bashrc ~/.bashrc; \
+	fi
 	ansible-playbook tasks/alias.yml -i local -vv
 aquarium:
 	ansible-playbook devices/bluetooth.yml -i local -vv
