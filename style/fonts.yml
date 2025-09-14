@@ -16,8 +16,9 @@
         src: "MartianMono-sWdxLt.ttf"
         dest: "~/.local/share/fonts/"
 
-    - name: Use font in the Terminal
-      command: dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font  "'MartianMono sWd xLt 12'"
+      - name: Use font in the Terminal
+        command: dconf write /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font  "'MartianMono sWd xLt 12'"
+        when: ansible_distribution == 'Ubuntu'
 
     - name: Remove all temp files
       find:
