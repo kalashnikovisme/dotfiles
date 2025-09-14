@@ -37,6 +37,7 @@ install_environment:
 	ansible-playbook devtools/lefthook.yml -i local -vv
 	if [ "$(OS)" = "omarchy" ]; then \
 		ansible-playbook devices/monitor.yml -i local -vv; \
+		ansible-playbook devices/keyboard.yml -i local -vv; \
 	fi
 install_ansible_ubuntu:
 	sudo apt install -y software-properties-common
