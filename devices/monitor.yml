@@ -1,4 +1,19 @@
 - hosts: all
   tasks:
+    - name: Ensure Hyprland config directory exists
+      file:
+        path: ~/.config/hypr
+        state: directory
+
+    - name: Copy monitor configuration
+      copy:
+        src: ../files/omarchy/monitors.conf
+        dest: ~/.config/hypr/monitors.conf
+
+    - name: Copy input configuration
+      copy:
+        src: ../files/omarchy/input.conf
+        dest: ~/.config/hypr/input.conf
+
     - name: Configure monitor
       command: hyprctl keyword monitor eDP-1,1920x1080@60,0x0,1
