@@ -28,3 +28,13 @@
         - alias opengem='_() { cd $(rvm gemdir)/gems/$(gem list | grep -o "$1 (\([0-9]\.*\)*" | sed "s/ (/-/"); }; _'
         - alias dm="gp && gco main && gp && gpt && gco develop"
         - alias gce='git commit --allow-empty -m "Empty commit"'
+    - lineinfile:
+        dest: ~/.bashrc
+        state: present
+        line: "alias vi='nvim'"
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+    - lineinfile:
+        dest: ~/.bashrc
+        state: present
+        line: "alias vim='nvim'"
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
