@@ -28,13 +28,12 @@ install_environment:
 	ansible-playbook devices/lefthook.yml -i local -vv
 	./sec/1password_cli.sh
 install_ansible_ubuntu:
-        sudo apt install -y software-properties-common
-        sudo apt install -y ansible
-        ansible-galaxy collection install community.general
-
+    sudo apt install -y software-properties-common
+    sudo apt install -y ansible
+    ansible-galaxy collection install community.general
 install_ansible_arch:
-        sudo pacman -Syu --noconfirm ansible
-        ansible-galaxy collection install community.general
+    sudo pacman -Syu --noconfirm ansible
+    ansible-galaxy collection install community.general
 update_neovim:
 	ansible-playbook devtools/neovim.yml -i local -vv
 update_bash:
