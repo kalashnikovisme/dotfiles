@@ -3,6 +3,7 @@
   tasks:
     - name: Set Terminal as favorite app
       command: gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'piavpn.desktop', 'sidekick-browser.desktop', 'telegramdesktop.desktop', 'gnome-control-center.desktop']"
+      when: ansible_distribution == 'Ubuntu'
       
     - name: Set dark theme
       command: gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
