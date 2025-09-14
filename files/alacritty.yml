@@ -1,3 +1,7 @@
+shell:
+  program: /bin/bash
+  args:
+    - --login
 font:
   normal:
     family: "Martian Mono"
