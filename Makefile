@@ -1,7 +1,5 @@
 install_environment:
-	if [ "$(OS)" = "ubuntu" ]; then \
-		ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR); \
-	fi
+	ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR);
 	ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
