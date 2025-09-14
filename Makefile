@@ -47,7 +47,9 @@ install_ansible_omarchy:
 	sudo pacman -Syu --noconfirm ansible
 	ansible-galaxy collection install community.general
 update_neovim:
-	ansible-playbook devtools/neovim.yml -i local -vv
+	if [ "$(OS)" = "omarchy" ]; then \
+		ansible-playbook devtools/neovim.yml -i local -vv; \
+	fi
 update_bash:
 	if [ "$(OS)" = "omarchy" ]; then \
 		cp -f files/bashrc_omarchy ~/.bashrc; \
