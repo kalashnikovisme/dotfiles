@@ -28,12 +28,13 @@ install_environment:
 	ansible-playbook sec/ssh.yml -i local -vv
 	ansible-playbook devices/bluetooth.yml -i local -vv
 	ansible-playbook devices/lefthook.yml -i local -vv
+	ansible-playbook devices/monitor.yml -i local -vv
 	./sec/1password_cli.sh
 install_ansible_ubuntu:
 	sudo apt install -y software-properties-common
 	sudo apt install -y ansible
 	ansible-galaxy collection install community.general
-install_ansible_arch:
+install_ansible_omarchy:
 	sudo pacman -Syu --noconfirm ansible
 	ansible-galaxy collection install community.general
 update_neovim:

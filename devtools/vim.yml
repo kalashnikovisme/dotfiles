@@ -54,7 +54,7 @@
           - python3-pip
       when: ansible_pkg_mgr == 'apt'
 
-    - name: Install deoplete (Arch)
+    - name: Install deoplete (Omarchy)
       package:
         name:
           - python-pip
@@ -67,7 +67,7 @@
           - python3-msgpack
       when: ansible_pkg_mgr == 'apt'
 
-    - name: Install pynvim and msgpack (Arch)
+    - name: Install pynvim and msgpack (Omarchy)
       become: true
       package:
         name:

@@ -55,7 +55,7 @@
       become: yes
       when: ansible_pkg_mgr == 'apt'
 
-    - name: Install needed packages (Arch)
+    - name: Install needed packages (Omarchy)
       package:
         name:
           - xclip

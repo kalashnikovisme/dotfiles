@@ -26,7 +26,7 @@
       become: true
       when: ansible_pkg_mgr == 'apt'
 
-    - name: "Docker: install (Arch)"
+    - name: "Docker: install (Omarchy)"
       package:
         name:
           - docker
