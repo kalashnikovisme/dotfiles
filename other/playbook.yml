@@ -91,10 +91,6 @@
           - imagemagick
           - gimp
           - gnome-tweaks
-      become: yes
       when: ansible_pkg_mgr == 'pacman'
-    # - copy:
-    #     src: "../files/pg_hba.conf"
-    #     dest: /etc/postgresql/14/main/pg_hba.conf
     - command: "dpkg --add-architecture i386"
       become: true
