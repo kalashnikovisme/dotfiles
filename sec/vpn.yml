@@ -12,14 +12,3 @@
 
     #- name: "Private Internet Access: Install"
     #command: ./download_installer_linux.sh
-
-    - name: "Outline: Download"
-      get_url: 
-        url: https://s3.amazonaws.com/outline-releases/client/Outline-Client.AppImage
-        dest: ./Outline-Client.AppImage
-
-    - name: "Outline: Make installation file executable"
-      command: chmod +x ./Outline-Client.AppImage
-        
-    - name: "Outline: Run installation"
-      command: ./Outline-Client.AppImage &
