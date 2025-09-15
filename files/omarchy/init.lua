@@ -1,3 +1,6 @@
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
+
 -- Neovim key mappings for Omarchy installation
 -- F2: write, F3: quit, F4: write and quit
 
