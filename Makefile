@@ -1,5 +1,7 @@
 install_environment:
-	ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR);
+	if [ "$(OS)" != "omarchy" ]; then \
+		ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR); \
+	fi
 	ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
