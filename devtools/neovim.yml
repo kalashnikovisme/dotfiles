@@ -1,17 +1,6 @@
 ---
 - hosts: all
   tasks:
-    - name: Remove LazyVim directories on Omarchy
-      file:
-        path: "{{ item }}"
-        state: absent
-      loop:
-        - ~/.config/nvim
-        - ~/.local/share/nvim
-        - ~/.local/state/nvim
-        - ~/.cache/nvim
-      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
-
     - name: Install Neovim
       become: yes
       package:
@@ -32,17 +21,46 @@
         state: directory
         mode: '0755'
 
+    - name: Remove legacy init.vim when using LazyVim on Omarchy
+      file:
+        path: ~/.config/nvim/init.vim
+        state: absent
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
+    - name: Reset LazyVim Lua directory on Omarchy
+      file:
+        path: ~/.config/nvim/lua
+        state: absent
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
+    - name: Deploy LazyVim init.lua on Omarchy
+      copy:
+        src: "{{ playbook_dir }}/../files/omarchy/init.lua"
+        dest: ~/.config/nvim/init.lua
+        mode: '0644'
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
+    - name: Deploy LazyVim Lua config on Omarchy
+      copy:
+        src: "{{ playbook_dir }}/../files/omarchy/lua/"
+        dest: ~/.config/nvim/lua/
+        mode: preserve
+        directory_mode: '0755'
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
     - name: Copy existing init.vim to ~/.config/nvim/init.vim
       copy:
         src: ../files/init.vim
         dest: ~/.config/nvim/init.vim
         remote_src: yes
+      when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
 
     - name: Replace instances of ~/.vim with ~/.config/nvim in init.vim
       lineinfile:
         path: ~/.config/nvim/init.vim
         regexp: 'let data_dir = has(.nvim.) ? stdpath(.data.) . /site : ~/.vim'
         line: 'let data_dir = has("nvim") ? stdpath("data") . "/site" : "~/.config/nvim"'
+      when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
 
     - name: Ensure vim-plug is installed for Neovim
       shell: |
@@ -50,6 +68,7 @@
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
       args:
         creates: ~/.local/share/nvim/site/autoload/plug.vim
+      when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
 
     - name: Check if Neovim is installed successfully
       command: nvim --version
@@ -59,5 +78,11 @@
       debug:
         var: nvim_version.stdout
 
+    - name: Install LazyVim plugins on Omarchy
+      shell: nvim --headless "+Lazy! sync" +qa
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
     - name: Test Neovim configuration by opening Neovim
       shell: nvim +PlugInstall +qall
+      when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
+

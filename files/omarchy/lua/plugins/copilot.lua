@@ -1,6 +1,8 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     opts = function(_, opts)
       opts = opts or {}
       opts.suggestion = opts.suggestion or {}
@@ -36,8 +38,12 @@ return {
       opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
         local copilot_ok, copilot = pcall(require, "copilot.suggestion")
         if copilot_ok and copilot.is_visible() then
-          copilot.accept()
-        elseif cmp.visible() then
+          local accepted = copilot.accept()
+          if accepted then
+            return
+          end
+        end
+        if cmp.visible() then
           cmp.select_next_item()
         elseif has_luasnip and luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
@@ -50,3 +56,4 @@ return {
     end,
   },
 }
+
