@@ -4,6 +4,10 @@ return {
     opts = function(_, opts)
       opts = opts or {}
       opts.suggestion = opts.suggestion or {}
+      opts.suggestion.enabled = true
+      if opts.suggestion.auto_trigger == nil then
+        opts.suggestion.auto_trigger = true
+      end
       opts.suggestion.keymap = opts.suggestion.keymap or {}
       opts.suggestion.keymap.accept = false
     end,
