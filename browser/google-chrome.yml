@@ -1,9 +1,27 @@
 - hosts: all
-  become_user: root
+  become: true
   tasks:
-    - get_url: 
+    - name: Download Google Chrome .deb
+      get_url:
         url: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         dest: ./google-chrome.deb
-    - name: Install Google Chrome
-      command: dpkg -i google-chrome.deb
-      become: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install Google Chrome (Debian/Ubuntu)
+      apt:
+        deb: ./google-chrome.deb
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Ensure Flathub remote is configured (Omarchy)
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+      when: ansible_pkg_mgr == 'pacman'
+
+    - name: Install Google Chrome via Flatpak (Omarchy)
+      community.general.flatpak:
+        name: com.google.Chrome
+        state: present
+        remote: flathub
+      when: ansible_pkg_mgr == 'pacman'
