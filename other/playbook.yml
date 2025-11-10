@@ -90,5 +90,6 @@
           - imagemagick
           - gimp
           - gnome-tweaks
+          - flatpak
       become: yes
       when: ansible_pkg_mgr == 'pacman'
