@@ -41,6 +41,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'junegunn/goyo.vim'
 Plug 'github/copilot.vim'
+let g:copilot_no_tab_map = v:true
 " Plug 'dpayne/codeGPT.nvim'
 Plug 'chrisbra/csv.vim'
 call plug#end()
@@ -49,6 +50,7 @@ syntax enable
 filetype plugin indent on
 
 " Key mappings
+imap <silent><script><expr> <Tab> copilot#Accept("\<Tab>")
 imap <F2> <Esc>:w<CR>
 map <F2> <Esc>:w<CR>
 imap <F3> <Esc>:q!<CR>
