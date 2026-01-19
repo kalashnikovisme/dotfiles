@@ -41,6 +41,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'junegunn/goyo.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'udalov/kotlin-vim'
 call plug#end()
 syntax enable
 filetype plugin indent on
@@ -79,6 +80,7 @@ au BufRead,BufNewFile Makefile set tabstop=2
 au BufRead,BufNewFile Dockerfile* set syntax=dockerfile
 au BufRead,BufNewFile .eslintrc set syntax=json
 au BufRead,BufNewFile *.tsx set syntax=typescript
+au BufRead,BufNewFile *.kt,*.kts set filetype=kotlin
 au BufRead,BufNewFile *.erdconfig set syntax=yaml
 au BufRead,BufNewFile *.hbs set syntax=html
 au BufNewFile,BufRead * if &syntax == '' | set syntax=sh | endif
