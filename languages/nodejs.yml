@@ -14,8 +14,8 @@
         msg: "nvm installation failed: {{ ansible_env.HOME }}/.nvm/nvm.sh not found."
       when: not stat_result.stat.exists
 
-    - name: Install latest Node.js via nvm
-      shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh" && nvm install node && nvm alias default node
+    - name: Install latest LTS Node.js via nvm
+      shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh" && nvm install --lts && nvm alias default lts/*
 
     - name: Add Yarn apt key
       become: yes
