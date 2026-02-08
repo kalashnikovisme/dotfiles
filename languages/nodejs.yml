@@ -24,6 +24,20 @@
       args:
         executable: /bin/bash
 
+    - name: Ensure nvm is initialized in bash and zsh
+      blockinfile:
+        path: "{{ item }}"
+        create: true
+        marker: "# {mark} ANSIBLE MANAGED BLOCK: NVM"
+        block: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+      loop:
+        - "{{ ansible_env.HOME }}/.bashrc"
+        - "{{ ansible_env.HOME }}/.zshrc"
+        - "{{ ansible_env.HOME }}/.profile"
+
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
