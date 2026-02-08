@@ -35,8 +35,19 @@
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       loop:
         - "{{ ansible_env.HOME }}/.bashrc"
+        - "{{ ansible_env.HOME }}/.bash_profile"
         - "{{ ansible_env.HOME }}/.zshrc"
         - "{{ ansible_env.HOME }}/.profile"
+
+    - name: Ensure nvm is initialized system-wide
+      become: yes
+      copy:
+        dest: /etc/profile.d/nvm.sh
+        mode: "0644"
+        content: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     - name: Add Yarn apt key
       become: yes
