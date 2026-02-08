@@ -15,7 +15,13 @@
       when: not stat_result.stat.exists
 
     - name: Install latest LTS Node.js via nvm
-      shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh" && nvm install --lts && nvm alias default lts/*
+      shell: |
+        export NVM_DIR="{{ ansible_env.HOME }}/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        nvm install --lts
+        nvm alias default 'lts/*'
+      args:
+        executable: /bin/bash
 
     - name: Add Yarn apt key
       become: yes
