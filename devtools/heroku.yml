@@ -5,5 +5,5 @@
       become: true
       community.general.snap:
         classic: true
-        name:
-          - heroku 
+        name: heroku
+        state: present
