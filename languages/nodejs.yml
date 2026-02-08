@@ -20,6 +20,7 @@
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         nvm install --lts
         nvm alias default 'lts/*'
+        nvm use --lts
       args:
         executable: /bin/bash
 
