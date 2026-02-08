@@ -4,6 +4,16 @@
     - name: Install nvm
       shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
+    - name: Check nvm installation
+      stat:
+        path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+      register: stat_result
+
+    - name: Fail if nvm is not installed
+      fail:
+        msg: "nvm installation failed: {{ ansible_env.HOME }}/.nvm/nvm.sh not found."
+      when: not stat_result.stat.exists
+
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -27,4 +37,3 @@
         name: yarn
         state: present
       when: ansible_pkg_mgr == 'pacman'
-
