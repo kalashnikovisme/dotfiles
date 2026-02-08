@@ -11,7 +11,8 @@
 
     - name: Install lefthook via snap
       community.general.snap:
-        name:
-          - lefthook
+        name: lefthook
+        classic: true
+        state: present
       become: true
       when: ansible_env.OS is not defined or ansible_env.OS != "omarchy"
