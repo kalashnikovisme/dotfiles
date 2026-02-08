@@ -14,6 +14,9 @@
         msg: "nvm installation failed: {{ ansible_env.HOME }}/.nvm/nvm.sh not found."
       when: not stat_result.stat.exists
 
+    - name: Install latest Node.js via nvm
+      shell: . "{{ ansible_env.HOME }}/.nvm/nvm.sh" && nvm install node && nvm alias default node
+
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
