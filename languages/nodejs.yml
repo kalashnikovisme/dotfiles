@@ -4,6 +4,65 @@
     - name: Install nvm
       shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
+    - name: Check nvm installation
+      stat:
+        path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+      register: stat_result
+
+    - name: Fail if nvm is not installed
+      fail:
+        msg: "nvm installation failed: {{ ansible_env.HOME }}/.nvm/nvm.sh not found."
+      when: not stat_result.stat.exists
+
+    - name: Install latest LTS Node.js via nvm
+      shell: |
+        export NVM_DIR="{{ ansible_env.HOME }}/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+        nvm install --lts
+        nvm alias default 'lts/*'
+        nvm use --lts
+      args:
+        executable: /bin/bash
+
+    - name: Ensure nvm is initialized in bash and zsh
+      blockinfile:
+        path: "{{ item }}"
+        create: true
+        marker: "# {mark} ANSIBLE MANAGED BLOCK: NVM"
+        block: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+      loop:
+        - "{{ ansible_env.HOME }}/.bashrc"
+        - "{{ ansible_env.HOME }}/.bash_profile"
+        - "{{ ansible_env.HOME }}/.zshrc"
+        - "{{ ansible_env.HOME }}/.profile"
+
+    - name: Ensure nvm is initialized system-wide
+      become: yes
+      copy:
+        dest: /etc/profile.d/nvm.sh
+        mode: "0644"
+        content: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+    - name: Ensure nvm is initialized for system-wide bash
+      become: yes
+      blockinfile:
+        path: "{{ item }}"
+        create: true
+        marker: "# {mark} ANSIBLE MANAGED BLOCK: NVM"
+        block: |
+          if [ -s /etc/profile.d/nvm.sh ]; then
+            . /etc/profile.d/nvm.sh
+          fi
+      loop:
+        - /etc/bash.bashrc
+        - /etc/bashrc
+
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -27,4 +86,3 @@
         name: yarn
         state: present
       when: ansible_pkg_mgr == 'pacman'
-
