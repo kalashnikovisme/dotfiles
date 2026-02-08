@@ -5,8 +5,10 @@
   tasks:
     - name: Install git
       package:
-        name:
-          - git
+        name: git
+        state: present
+      become: yes
+
     - command: git config --global user.email "{{ email }}"
     - command: git config --global user.name "{{ name }}"
     - command: git config --global core.excludesfile ~/.gitignore
