@@ -49,6 +49,20 @@
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+    - name: Ensure nvm is initialized for system-wide bash
+      become: yes
+      blockinfile:
+        path: "{{ item }}"
+        create: true
+        marker: "# {mark} ANSIBLE MANAGED BLOCK: NVM"
+        block: |
+          if [ -s /etc/profile.d/nvm.sh ]; then
+            . /etc/profile.d/nvm.sh
+          fi
+      loop:
+        - /etc/bash.bashrc
+        - /etc/bashrc
+
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
