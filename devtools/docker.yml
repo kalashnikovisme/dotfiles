@@ -30,13 +30,41 @@
         name: docker
         state: present
       when: ansible_distribution == 'Ubuntu'
-    - name: "Install docker-compose version: {{ docker_compose_version }}"
-      command: 'curl -L "https://github.com/docker/compose/releases/download/v{{ docker_compose_version }}/docker-compose-linux-x86_64" -o /usr/local/bin/docker-compose'
-      become: true
+    - name: Check for docker compose plugin location
+      stat:
+        path: "{{ item }}"
+      register: docker_compose_plugin_stat
+      loop:
+        - /usr/libexec/docker/cli-plugins/docker-compose
+        - /usr/lib/docker/cli-plugins/docker-compose
       when: ansible_distribution == 'Ubuntu'
-    - name: Add execute permissions
-      become: true
+    - name: Set docker compose plugin path
+      set_fact:
+        docker_compose_plugin_path: "{{ item.stat.path }}"
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - item.stat.exists
+      loop: "{{ docker_compose_plugin_stat.results | default([]) }}"
+    - name: Link docker-compose to installed plugin
       file:
-        path: /usr/local/bin/docker-compose
-        mode: +x
-      when: ansible_distribution == 'Ubuntu'
+        src: "{{ docker_compose_plugin_path }}"
+        dest: /usr/local/bin/docker-compose
+        state: link
+      become: true
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - docker_compose_plugin_path is defined
+    - name: "Install docker-compose version: {{ docker_compose_version }}"
+      get_url:
+        url: "https://github.com/docker/compose/releases/download/v{{ docker_compose_version }}/docker-compose-linux-x86_64"
+        dest: /usr/local/bin/docker-compose
+        mode: "0755"
+        timeout: 30
+      register: docker_compose_download
+      retries: 3
+      delay: 5
+      until: docker_compose_download is succeeded
+      become: true
+      when:
+        - ansible_distribution == 'Ubuntu'
+        - docker_compose_plugin_path is not defined
