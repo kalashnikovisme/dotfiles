@@ -1,0 +1,31 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Install Google Antigravity launcher script
+      copy:
+        dest: /usr/local/bin/google-antigravity
+        mode: '0755'
+        content: |
+          #!/usr/bin/env bash
+          if command -v xdg-open >/dev/null 2>&1; then
+            xdg-open "https://elgoog.im/gravity/"
+          elif command -v gio >/dev/null 2>&1; then
+            gio open "https://elgoog.im/gravity/"
+          else
+            echo "Unable to find xdg-open or gio to open Google Antigravity."
+            exit 1
+          fi
+
+    - name: Install Google Antigravity desktop entry
+      copy:
+        dest: /usr/share/applications/google-antigravity.desktop
+        mode: '0644'
+        content: |
+          [Desktop Entry]
+          Name=Google Antigravity
+          Comment=Open Google Antigravity in the default browser
+          Exec=/usr/local/bin/google-antigravity
+          Icon=google-chrome
+          Type=Application
+          Categories=Network;WebBrowser;
+          Terminal=false
