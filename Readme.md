@@ -2,6 +2,18 @@
 
 Just run
 
+### From current repo checkout (for testing current branch)
+
+```
+./main.sh ubuntu
+```
+
+or
+
+```
+./main.sh omarchy
+```
+
 ### Ubuntu
 
 ```
