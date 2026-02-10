@@ -1,31 +1,38 @@
 - hosts: all
   become: true
   tasks:
-    - name: Install Google Antigravity launcher script
-      copy:
-        dest: /usr/local/bin/google-antigravity
+    - name: Ensure antigravity apt keyring directory exists
+      file:
+        path: /etc/apt/keyrings
+        state: directory
         mode: '0755'
-        content: |
-          #!/usr/bin/env bash
-          if command -v xdg-open >/dev/null 2>&1; then
-            xdg-open "https://elgoog.im/gravity/"
-          elif command -v gio >/dev/null 2>&1; then
-            gio open "https://elgoog.im/gravity/"
-          else
-            echo "Unable to find xdg-open or gio to open Google Antigravity."
-            exit 1
-          fi
+      when: ansible_pkg_mgr == 'apt'
 
-    - name: Install Google Antigravity desktop entry
-      copy:
-        dest: /usr/share/applications/google-antigravity.desktop
+    - name: Download antigravity repo signing key
+      get_url:
+        url: https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg
+        dest: /tmp/antigravity-repo-signing-key.gpg
         mode: '0644'
-        content: |
-          [Desktop Entry]
-          Name=Google Antigravity
-          Comment=Open Google Antigravity in the default browser
-          Exec=/usr/local/bin/google-antigravity
-          Icon=google-chrome
-          Type=Application
-          Categories=Network;WebBrowser;
-          Terminal=false
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install antigravity repository keyring
+      command: gpg --dearmor --yes -o /etc/apt/keyrings/antigravity-repo-key.gpg /tmp/antigravity-repo-signing-key.gpg
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Configure antigravity apt repository
+      apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/antigravity-repo-key.gpg] https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/ antigravity-debian main"
+        filename: antigravity
+        state: present
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Update apt cache
+      apt:
+        update_cache: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install antigravity package
+      apt:
+        name: antigravity
+        state: present
+      when: ansible_pkg_mgr == 'apt'

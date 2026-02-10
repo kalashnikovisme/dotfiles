@@ -66,7 +66,7 @@ It installs Ansible and use Ansible playbook to install other applications
 18. GIMP
 19. Ubuntu Tweaks
 20. Google Chrome (Ubuntu only)
-21. Google Antigravity
+21. Google Antigravity (Ubuntu only)
 22. Rocket.Chat Desktop
 23. pyenv
 24. cmake
