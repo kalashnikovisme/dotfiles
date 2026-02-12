@@ -1,0 +1,38 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Ensure antigravity apt keyring directory exists
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Download antigravity repo signing key
+      get_url:
+        url: https://us-central1-apt.pkg.dev/doc/repo-signing-key.gpg
+        dest: /tmp/antigravity-repo-signing-key.gpg
+        mode: '0644'
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install antigravity repository keyring
+      command: gpg --dearmor --yes -o /etc/apt/keyrings/antigravity-repo-key.gpg /tmp/antigravity-repo-signing-key.gpg
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Configure antigravity apt repository
+      apt_repository:
+        repo: "deb [signed-by=/etc/apt/keyrings/antigravity-repo-key.gpg] https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/ antigravity-debian main"
+        filename: antigravity
+        state: present
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Update apt cache
+      apt:
+        update_cache: true
+      when: ansible_pkg_mgr == 'apt'
+
+    - name: Install antigravity package
+      apt:
+        name: antigravity
+        state: present
+      when: ansible_pkg_mgr == 'apt'

@@ -66,12 +66,13 @@ It installs Ansible and use Ansible playbook to install other applications
 18. GIMP
 19. Ubuntu Tweaks
 20. Google Chrome (Ubuntu only)
-21. Rocket.Chat Desktop
-22. pyenv
-23. cmake
-24. Rust
-25. Telegram
-26. 1Password and 1Password CLI
+21. Google Antigravity (Ubuntu only)
+22. Rocket.Chat Desktop
+23. pyenv
+24. cmake
+25. Rust
+26. Telegram
+27. 1Password and 1Password CLI
 
 ### Configurations
 

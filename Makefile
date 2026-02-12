@@ -1,5 +1,6 @@
 install_environment:
 	ansible-playbook browser/google-chrome.yml -i local -vv -e curdir=$(CURDIR);
+	ansible-playbook browser/google-antigravity.yml -i local -vv -e curdir=$(CURDIR);
 	ansible-galaxy install -p $(CURDIR)/roles azavea.postgresql --ignore-errors
 	ansible-galaxy install -p $(CURDIR)/roles geerlingguy.nodejs --ignore-errors
 	ansible-playbook devtools/git.yml -i local -vv
