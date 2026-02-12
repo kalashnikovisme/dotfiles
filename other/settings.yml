@@ -1,6 +1,24 @@
 ---
 - hosts: all
   tasks:
+    - name: Ensure local bin directory exists
+      file:
+        path: ~/.local/bin
+        state: directory
+        mode: '0755'
+
+    - name: Install Downloads cleanup script
+      copy:
+        src: "{{ curdir }}/scripts/cleanup_downloads.sh"
+        dest: ~/.local/bin/cleanup_downloads.sh
+        mode: '0755'
+
+    - name: Schedule daily Downloads cleanup
+      cron:
+        name: Cleanup Downloads files older than 30 days
+        special_time: daily
+        job: "$HOME/.local/bin/cleanup_downloads.sh >/dev/null 2>&1"
+
     - name: Configure GNOME settings
       when: ansible_distribution == 'Ubuntu'
       block:
