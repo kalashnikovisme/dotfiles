@@ -62,4 +62,6 @@ update_omarchy_conf:
 	mkdir -p ~/.config/hypr
 	cp -f files/omarchy/monitors.conf ~/.config/hypr/monitors.conf
 	cp -f files/omarchy/input.conf ~/.config/hypr/input.conf
+	mkdir -p ~/.config/ghostty
+	cp -f files/ghostty/config ~/.config/ghostty/config
 
