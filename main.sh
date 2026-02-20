@@ -51,7 +51,13 @@ esac
 echo 'Set needed permissions for ansible'
 sudo chown -R $USER ~/.ansible/
 echo 'Install environment'
-OS=$OS make install_environment && make update_neovim && make update_bash
+OS=$OS make install_environment
+
+if [ "$OS" != "omarchy" ]; then
+  make update_neovim
+fi
+
+make update_bash
 
 if [ "$OS" = "ubuntu" ]; then
   echo 'Add current user to docker group'
