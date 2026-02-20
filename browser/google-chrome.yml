@@ -11,23 +11,3 @@
       apt:
         deb: ./google-chrome.deb
       when: ansible_facts["pkg_mgr"] == 'apt'
-
-    - name: Install Flatpak (Omarchy)
-      package:
-        name: flatpak
-        state: present
-      when: ansible_facts["pkg_mgr"] == 'pacman'
-
-    - name: Ensure Flathub remote is configured (Omarchy)
-      community.general.flatpak_remote:
-        name: flathub
-        state: present
-        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-      when: ansible_facts["pkg_mgr"] == 'pacman'
-
-    - name: Install Google Chrome via Flatpak (Omarchy)
-      community.general.flatpak:
-        name: com.google.Chrome
-        state: present
-        remote: flathub
-      when: ansible_facts["pkg_mgr"] == 'pacman'
