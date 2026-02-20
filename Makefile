@@ -21,15 +21,14 @@ install_environment:
 		ansible-playbook content/spotify.yml -i local -vv -e curdir=$(CURDIR); \
 	fi
 	ansible-playbook style/fonts.yml -i local -vv -e curdir=$(CURDIR)
-	ansible-playbook devtools/alacritty.yml -i local -vv
+	ansible-playbook devtools/ghostty.yml -i local -vv
 	ansible-playbook package_managers/appimages.yml -i local -vv
 	ansible-playbook languages/ruby.yml -i local -vv
-	ansible-playbook languages/rust.yml -i local -vv
 	if [ "$(OS)" = "ubuntu" ]; then \
 		ansible-playbook devtools/heroku.yml -i local -vv; \
 	fi
 	ansible-playbook package_managers/app_image_launcher.yml -i local -vv
-	ansible-playbook other/settings.yml -i local -vv
+	ansible-playbook other/settings.yml -i local -vv -e curdir=$(CURDIR)
 	mkdir -p ~/projects/
 	ansible-playbook sec/vpn.yml -i local -vv
 	ansible-playbook sec/1password.yml -i local -vv
@@ -58,3 +57,11 @@ update_bash:
 	ansible-playbook tasks/alias.yml -i local -vv
 aquarium:
 	ansible-playbook devices/bluetooth.yml -i local -vv
+
+update_omarchy_conf:
+	mkdir -p ~/.config/hypr
+	cp -f files/omarchy/monitors.conf ~/.config/hypr/monitors.conf
+	cp -f files/omarchy/input.conf ~/.config/hypr/input.conf
+	mkdir -p ~/.config/ghostty
+	cp -f files/ghostty/config ~/.config/ghostty/config
+

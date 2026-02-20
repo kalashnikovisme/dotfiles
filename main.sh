@@ -29,7 +29,7 @@ case "$OS" in
     echo 'Install make'
     sudo pacman -S --noconfirm make
     echo 'Install ansible'
-    make install_ansible_omarchy
+    make install_ansible_omarchy OS="$OS"
     ;;
   *ubuntu*|*debian*)
     echo 'Upgrade apt'
@@ -40,7 +40,7 @@ case "$OS" in
     sudo apt-get install -y make
     echo 'Install ansible'
     OS="ubuntu"
-    make install_ansible_ubuntu
+    make install_ansible_ubuntu OS="$OS"
     ;;
   *)
     echo "Usage: $0 [omarchy|ubuntu]"
@@ -51,7 +51,13 @@ esac
 echo 'Set needed permissions for ansible'
 sudo chown -R $USER ~/.ansible/
 echo 'Install environment'
-OS=$OS make install_environment && make update_neovim && make update_bash
+make install_environment OS="$OS"
+
+if [ "$OS" != "omarchy" ]; then
+  make update_neovim OS="$OS"
+fi
+
+make update_bash OS="$OS"
 
 if [ "$OS" = "ubuntu" ]; then
   echo 'Add current user to docker group'

@@ -2,21 +2,29 @@
 - hosts: all
   tasks:
     - name: Install nvm
-      shell: curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+      shell: |
+        export NVM_DIR="{{ ansible_facts['env']['HOME'] }}/.nvm"
+        if [ ! -s "$NVM_DIR/nvm.sh" ]; then
+          git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+          cd "$NVM_DIR"
+          git checkout v0.40.3
+        fi
+      args:
+        executable: /bin/bash
 
     - name: Check nvm installation
       stat:
-        path: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+        path: "{{ ansible_facts['env']['HOME'] }}/.nvm/nvm.sh"
       register: stat_result
 
     - name: Fail if nvm is not installed
       fail:
-        msg: "nvm installation failed: {{ ansible_env.HOME }}/.nvm/nvm.sh not found."
+        msg: "nvm installation failed: {{ ansible_facts['env']['HOME'] }}/.nvm/nvm.sh not found."
       when: not stat_result.stat.exists
 
     - name: Install latest LTS Node.js via nvm
       shell: |
-        export NVM_DIR="{{ ansible_env.HOME }}/.nvm"
+        export NVM_DIR="{{ ansible_facts['env']['HOME'] }}/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
         nvm install --lts
         nvm alias default 'lts/*'
@@ -34,10 +42,10 @@
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
       loop:
-        - "{{ ansible_env.HOME }}/.bashrc"
-        - "{{ ansible_env.HOME }}/.bash_profile"
-        - "{{ ansible_env.HOME }}/.zshrc"
-        - "{{ ansible_env.HOME }}/.profile"
+        - "{{ ansible_facts['env']['HOME'] }}/.bashrc"
+        - "{{ ansible_facts['env']['HOME'] }}/.bash_profile"
+        - "{{ ansible_facts['env']['HOME'] }}/.zshrc"
+        - "{{ ansible_facts['env']['HOME'] }}/.profile"
 
     - name: Ensure nvm is initialized system-wide
       become: yes
@@ -66,23 +74,23 @@
     - name: Add Yarn apt key
       become: yes
       shell: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-      when: ansible_pkg_mgr == 'apt'
+      when: ansible_facts['pkg_mgr'] == 'apt'
 
     - name: Add Yarn repository
       become: yes
       shell: echo "deb https://dl.yarnpkg.com/debian stable main" | tee /etc/apt/sources.list.d/yarn.list
-      when: ansible_pkg_mgr == 'apt'
+      when: ansible_facts['pkg_mgr'] == 'apt'
 
     - name: Install yarn (Debian)
       become: yes
       apt:
         name: yarn
         update_cache: yes
-      when: ansible_pkg_mgr == 'apt'
+      when: ansible_facts['pkg_mgr'] == 'apt'
 
     - name: Install yarn (Arch)
       become: yes
       pacman:
         name: yarn
         state: present
-      when: ansible_pkg_mgr == 'pacman'
+      when: ansible_facts['pkg_mgr'] == 'pacman'
