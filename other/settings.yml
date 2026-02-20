@@ -13,6 +13,21 @@
         dest: ~/.local/bin/cleanup_downloads.sh
         mode: '0755'
 
+
+    - name: Ensure cron package is installed (Debian)
+      become: yes
+      package:
+        name: cron
+        state: present
+      when: ansible_facts['pkg_mgr'] == 'apt'
+
+    - name: Ensure cron package is installed (Omarchy)
+      become: yes
+      package:
+        name: cronie
+        state: present
+      when: ansible_facts['pkg_mgr'] == 'pacman'
+
     - name: Schedule daily Downloads cleanup
       cron:
         name: Cleanup Downloads files older than 30 days
@@ -20,7 +35,7 @@
         job: "$HOME/.local/bin/cleanup_downloads.sh >/dev/null 2>&1"
 
     - name: Configure GNOME settings
-      when: ansible_distribution == 'Ubuntu'
+      when: ansible_facts['distribution'] == 'Ubuntu'
       block:
         - name: Set Terminal as favorite app
           command: gsettings set org.gnome.shell favorite-apps "['org.gnome.Terminal.desktop', 'piavpn.desktop', 'sidekick-browser.desktop', 'telegramdesktop.desktop', 'gnome-control-center.desktop']"
