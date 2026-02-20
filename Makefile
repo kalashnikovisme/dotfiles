@@ -57,3 +57,9 @@ update_bash:
 	ansible-playbook tasks/alias.yml -i local -vv
 aquarium:
 	ansible-playbook devices/bluetooth.yml -i local -vv
+
+update_omarchy_conf:
+	mkdir -p ~/.config/hypr
+	cp -f files/omarchy/monitors.conf ~/.config/hypr/monitors.conf
+	cp -f files/omarchy/input.conf ~/.config/hypr/input.conf
+
