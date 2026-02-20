@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: Ensure Ghostty config directory exists
+      file:
+        path: ~/.config/ghostty
+        state: directory
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
+
+    - name: Configure Ghostty font
+      copy:
+        src: ../files/ghostty/config
+        dest: ~/.config/ghostty/config
+      when: ansible_env.OS is defined and ansible_env.OS == "omarchy"
