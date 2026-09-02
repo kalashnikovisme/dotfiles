@@ -77,3 +77,4 @@ It installs Ansible and use Ansible playbook to install other applications
 
 * bashrc / bashrc_omarchy
 * dpkg
+* USB lamp turns on/off automatically when the webcam is opened/closed (Omarchy only, `devices/lamp-camera.yml`)

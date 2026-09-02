@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Turns a USB lamp on/off (via uhubctl port power) whenever the webcam is opened/closed.
+set -euo pipefail
+
+HUB="{{ hub }}"
+PORT="{{ port }}"
+DEVICES=(/dev/video0 /dev/video1)
+DEBOUNCE=2
+
+camera_in_use() {
+  /usr/bin/fuser "${DEVICES[@]}" >/dev/null 2>&1
+}
+
+set_lamp() {
+  /usr/bin/uhubctl -l "$HUB" -p "$PORT" -a "$1" >/dev/null 2>&1
+}
+
+/usr/bin/inotifywait -m -e open -e close "${DEVICES[@]}" |
+while read -r _dir event _file; do
+  case "$event" in
+    OPEN*)
+      camera_in_use && set_lamp on
+      ;;
+    CLOSE*)
+      ( sleep "$DEBOUNCE"
+        camera_in_use || set_lamp off ) &
+      ;;
+  esac
+done

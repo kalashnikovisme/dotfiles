@@ -1,0 +1,13 @@
+[Unit]
+Description=Turn USB lamp on/off when the webcam is used
+After=systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/lamp-camera-watch.sh
+Restart=always
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target
